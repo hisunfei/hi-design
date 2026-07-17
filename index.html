@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>嗨设计 — 设计思维启蒙</title>
+<title data-i18n="pageTitle">嗨设计 — 设计思维启蒙</title>
 <style>
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,7 +23,7 @@
   --font-display: 'Noto Serif SC', 'Source Han Serif SC', serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap');
 
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -32,6 +32,49 @@ body {
   color: var(--fg);
   line-height: 1.8;
   overflow-x: hidden;
+}
+
+html[lang="ja"] body {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Noto Sans SC', sans-serif;
+}
+html[lang="ja"] .hero h1,
+html[lang="ja"] section h2,
+html[lang="ja"] section .section-num,
+html[lang="ja"] .card h3 {
+  font-family: 'Noto Serif JP', 'Source Han Serif SC', serif;
+}
+
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switcher {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  gap: 4px;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 4px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.lang-switcher button {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray);
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.lang-switcher button:hover { color: var(--fg); }
+.lang-switcher button.active {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* ===== HERO ===== */
@@ -46,7 +89,6 @@ body {
   background: linear-gradient(160deg, #fff 0%, #f0f4f8 50%, #fef9ef 100%);
   overflow: hidden;
 }
-
 .hero-ah {
   font-family: var(--font-display);
   font-size: clamp(120px, 20vw, 280px);
@@ -59,12 +101,7 @@ body {
   transition: transform 0.3s;
 }
 .hero-ah:hover { transform: scale(1.1) rotate(-5deg); }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 .hero h1 {
   font-family: var(--font-display);
   font-size: clamp(32px, 5vw, 56px);
@@ -72,7 +109,6 @@ body {
   margin-top: 16px;
   letter-spacing: 0.08em;
 }
-
 .hero .subtitle {
   font-size: clamp(14px, 2vw, 20px);
   color: var(--gray);
@@ -81,7 +117,6 @@ body {
   max-width: 600px;
   padding: 0 20px;
 }
-
 .hero .scroll-hint {
   position: absolute;
   bottom: 40px;
@@ -96,13 +131,8 @@ body {
   margin-top: 4px;
   font-size: 20px;
 }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-/* Floating shapes in hero */
 .hero-shapes {
   position: absolute;
   inset: 0;
@@ -118,7 +148,6 @@ body {
 .hero-shapes span:nth-child(1) { width: 300px; height: 300px; background: var(--accent); top: 10%; left: -5%; animation: drift 20s infinite; }
 .hero-shapes span:nth-child(2) { width: 200px; height: 200px; background: var(--accent2); top: 60%; right: -3%; animation: drift 15s infinite reverse; }
 .hero-shapes span:nth-child(3) { width: 150px; height: 150px; background: var(--accent3); bottom: 15%; left: 20%; animation: drift 18s infinite; }
-
 @keyframes drift {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
   25% { transform: translate(30px, -20px) rotate(5deg); }
@@ -168,12 +197,10 @@ section {
   margin: 0 auto;
   padding: 80px 24px;
 }
-
 section .section-header {
   text-align: center;
   margin-bottom: 60px;
 }
-
 section .section-num {
   font-family: var(--font-display);
   font-size: 72px;
@@ -182,14 +209,12 @@ section .section-num {
   opacity: 0.15;
   line-height: 1;
 }
-
 section h2 {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 900;
   margin-top: -12px;
 }
-
 section .section-desc {
   color: var(--gray);
   max-width: 600px;
@@ -210,7 +235,6 @@ section .section-desc {
   transform: translateY(-2px);
   box-shadow: 0 8px 40px rgba(0,0,0,0.1);
 }
-
 .card h3 {
   font-family: var(--font-display);
   font-size: 22px;
@@ -219,10 +243,7 @@ section .section-desc {
   align-items: center;
   gap: 12px;
 }
-.card h3 .icon {
-  font-size: 28px;
-}
-
+.card h3 .icon { font-size: 28px; }
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -235,7 +256,6 @@ section .section-desc {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
 }
-
 .observe-item {
   background: var(--card-bg);
   border-radius: 12px;
@@ -246,38 +266,13 @@ section .section-desc {
   border: 2px solid transparent;
   user-select: none;
 }
-.observe-item:hover {
-  transform: scale(1.05);
-  border-color: var(--accent);
-}
-.observe-item .emoji {
-  font-size: 56px;
-  display: block;
-  margin-bottom: 12px;
-  transition: transform 0.4s;
-}
-.observe-item:hover .emoji {
-  transform: scale(1.2);
-}
-.observe-item .name {
-  font-weight: 500;
-  font-size: 15px;
-}
-.observe-item .detail {
-  display: none;
-  margin-top: 12px;
-  font-size: 13px;
-  color: var(--gray);
-  line-height: 1.6;
-  text-align: left;
-}
-.observe-item.expanded {
-  grid-column: span 2;
-  border-color: var(--accent2);
-}
-.observe-item.expanded .detail {
-  display: block;
-}
+.observe-item:hover { transform: scale(1.05); border-color: var(--accent); }
+.observe-item .emoji { font-size: 56px; display: block; margin-bottom: 12px; transition: transform 0.4s; }
+.observe-item:hover .emoji { transform: scale(1.2); }
+.observe-item .name { font-weight: 500; font-size: 15px; }
+.observe-item .detail { display: none; margin-top: 12px; font-size: 13px; color: var(--gray); line-height: 1.6; text-align: left; }
+.observe-item.expanded { grid-column: span 2; border-color: var(--accent2); }
+.observe-item.expanded .detail { display: block; }
 
 /* ===== INTERACTIVE: DECONSTRUCTION ===== */
 .decon-stage {
@@ -291,416 +286,160 @@ section .section-desc {
   overflow: hidden;
   cursor: pointer;
 }
-
-.decon-item {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.decon-part {
-  position: absolute;
-  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  font-size: 32px;
-  user-select: none;
-}
-
+.decon-item { position: relative; width: 200px; height: 200px; display: flex; justify-content: center; align-items: center; }
+.decon-part { position: absolute; transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); font-size: 32px; user-select: none; }
 .decon-label {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.9);
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 13px;
-  color: var(--gray);
-  backdrop-filter: blur(8px);
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  background: rgba(255,255,255,0.9); padding: 8px 20px; border-radius: 20px;
+  font-size: 13px; color: var(--gray); backdrop-filter: blur(8px);
 }
-
-.decon-controls {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
+.decon-controls { display: flex; gap: 8px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
 .decon-btn {
-  padding: 10px 24px;
-  border: 2px solid var(--fg);
-  background: transparent;
-  border-radius: 24px;
-  cursor: pointer;
-  font-family: var(--font-main);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s;
+  padding: 10px 24px; border: 2px solid var(--fg); background: transparent;
+  border-radius: 24px; cursor: pointer; font-family: var(--font-main);
+  font-size: 14px; font-weight: 500; transition: all 0.3s;
 }
-.decon-btn:hover, .decon-btn.active {
-  background: var(--fg);
-  color: #fff;
-}
+.decon-btn:hover, .decon-btn.active { background: var(--fg); color: #fff; }
 
 /* ===== INTERACTIVE: COLLECTION ===== */
 .collection-zone {
-  min-height: 300px;
-  border: 2px dashed var(--gray);
-  border-radius: var(--radius);
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-content: flex-start;
-  transition: all 0.3s;
-  position: relative;
+  min-height: 300px; border: 2px dashed var(--gray); border-radius: var(--radius);
+  padding: 20px; display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start;
+  transition: all 0.3s; position: relative;
 }
-.collection-zone.sorted {
-  border-color: var(--accent);
-  align-content: center;
-  justify-content: center;
-}
-
+.collection-zone.sorted { border-color: var(--accent); align-content: center; justify-content: center; }
 .collection-item {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 28px;
-  border-radius: 8px;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  cursor: pointer;
+  width: 48px; height: 48px; display: flex; justify-content: center; align-items: center;
+  font-size: 28px; border-radius: 8px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer;
 }
 .collection-item:hover { transform: scale(1.3); }
-
-.collection-controls {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 16px;
-}
+.collection-controls { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
 
 /* ===== INTERACTIVE: TYPOGRAPHY ===== */
-.typo-demo {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.typo-slider-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
+.typo-demo { text-align: center; padding: 40px 20px; }
+.typo-slider-container { max-width: 600px; margin: 0 auto; }
 .typo-display {
-  font-size: clamp(36px, 6vw, 72px);
-  font-weight: 700;
-  margin: 30px 0;
-  transition: all 0.4s;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.3;
+  font-size: clamp(36px, 6vw, 72px); font-weight: 700; margin: 30px 0;
+  transition: all 0.4s; min-height: 100px; display: flex; align-items: center;
+  justify-content: center; line-height: 1.3;
 }
-
-.typo-slider {
-  width: 100%;
-  -webkit-appearance: none;
-  height: 6px;
-  border-radius: 3px;
-  background: #ddd;
-  outline: none;
-  margin: 12px 0;
-}
-.typo-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-}
-
-.typo-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--gray);
-}
+.typo-slider { width: 100%; -webkit-appearance: none; height: 6px; border-radius: 3px; background: #ddd; outline: none; margin: 12px 0; }
+.typo-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); cursor: pointer; }
+.typo-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--gray); }
 
 /* ===== LAYOUT SECTION ===== */
-.layout-compare {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 24px;
-}
+.layout-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
 @media (max-width: 600px) { .layout-compare { grid-template-columns: 1fr; } }
-
 .layout-box {
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 24px;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
+  background: var(--card-bg); border-radius: 12px; padding: 24px;
+  border: 2px solid transparent; transition: border-color 0.3s;
 }
 .layout-box.good { border-color: #2ecc71; }
 .layout-box.bad { border-color: var(--accent); }
-.layout-box .tag {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
+.layout-box .tag { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 16px; }
 .layout-box.good .tag { background: #2ecc7122; color: #27ae60; }
 .layout-box.bad .tag { background: #e6394622; color: var(--accent); }
 
 /* ===== ARCHITECTURE ===== */
-.arch-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
+.arch-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 .arch-card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s;
-  cursor: pointer;
+  background: var(--card-bg); border-radius: 12px; overflow: hidden;
+  box-shadow: var(--shadow); transition: transform 0.3s; cursor: pointer;
 }
 .arch-card:hover { transform: translateY(-4px); }
-.arch-visual {
-  height: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 64px;
-  position: relative;
-  overflow: hidden;
-}
-.arch-card .arch-info {
-  padding: 16px;
-}
-.arch-card .arch-info h4 {
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-.arch-card .arch-info p {
-  font-size: 13px;
-  color: var(--gray);
-  line-height: 1.6;
-}
+.arch-visual { height: 160px; display: flex; justify-content: center; align-items: center; font-size: 64px; position: relative; overflow: hidden; }
+.arch-card .arch-info { padding: 16px; }
+.arch-card .arch-info h4 { font-size: 16px; margin-bottom: 6px; }
+.arch-card .arch-info p { font-size: 13px; color: var(--gray); line-height: 1.6; }
 
 /* ===== DESIGN PRINCIPLES ===== */
-.principle-list {
-  display: grid;
-  gap: 16px;
-}
+.principle-list { display: grid; gap: 16px; }
 .principle {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s;
+  display: flex; gap: 20px; align-items: flex-start; background: var(--card-bg);
+  border-radius: 12px; padding: 24px; box-shadow: var(--shadow); transition: transform 0.3s;
 }
 .principle:hover { transform: translateX(4px); }
 .principle .num {
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 900;
-  color: var(--accent);
-  opacity: 0.6;
-  flex-shrink: 0;
-  width: 50px;
-  text-align: center;
+  font-family: var(--font-display); font-size: 36px; font-weight: 900;
+  color: var(--accent); opacity: 0.6; flex-shrink: 0; width: 50px; text-align: center;
 }
-.principle .content h4 {
-  font-size: 17px;
-  margin-bottom: 6px;
-}
-.principle .content p {
-  font-size: 14px;
-  color: var(--gray);
-  line-height: 1.7;
-}
+.principle .content h4 { font-size: 17px; margin-bottom: 6px; }
+.principle .content p { font-size: 14px; color: var(--gray); line-height: 1.7; }
 
 /* ===== DESIGNERS ===== */
-.designer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-}
+.designer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
 .designer-card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 28px 20px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s;
+  background: var(--card-bg); border-radius: 12px; padding: 28px 20px;
+  text-align: center; box-shadow: var(--shadow); transition: transform 0.3s;
 }
 .designer-card:hover { transform: translateY(-4px); }
 .designer-card .avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  margin: 0 auto 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 36px;
+  width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 16px;
+  display: flex; justify-content: center; align-items: center; font-size: 36px;
 }
 .designer-card h4 { font-size: 16px; margin-bottom: 4px; }
 .designer-card .field { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
 .designer-card .quote {
-  font-size: 13px;
-  color: var(--fg);
-  font-style: italic;
-  line-height: 1.6;
-  padding: 12px;
-  background: var(--bg);
-  border-radius: 8px;
+  font-size: 13px; color: var(--fg); font-style: italic; line-height: 1.6;
+  padding: 12px; background: var(--bg); border-radius: 8px;
 }
 
 /* ===== PATTERN SECTION ===== */
-.pattern-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 12px;
-}
+.pattern-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
 .pattern-cell {
-  aspect-ratio: 1;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 36px;
-  cursor: pointer;
-  transition: all 0.3s;
-  user-select: none;
+  aspect-ratio: 1; border-radius: 12px; display: flex; justify-content: center;
+  align-items: center; font-size: 36px; cursor: pointer; transition: all 0.3s; user-select: none;
 }
 .pattern-cell:hover { transform: rotate(90deg) scale(1.1); }
 
 /* ===== COLOR SECTION ===== */
-.color-demo {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.color-swatch {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-}
+.color-demo { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.color-swatch { width: 80px; height: 80px; border-radius: 12px; cursor: pointer; transition: all 0.3s; position: relative; }
 .color-swatch:hover { transform: scale(1.15); }
 .color-swatch .label {
-  position: absolute;
-  bottom: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  color: var(--gray);
-  white-space: nowrap;
+  position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; color: var(--gray); white-space: nowrap;
 }
 
 /* ===== EXERCISE SECTION ===== */
 .exercise-area {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 40px;
-  box-shadow: var(--shadow);
-  text-align: center;
+  background: var(--card-bg); border-radius: var(--radius); padding: 40px;
+  box-shadow: var(--shadow); text-align: center;
 }
-.exercise-area canvas {
-  border: 2px solid #eee;
-  border-radius: 12px;
-  cursor: crosshair;
-  max-width: 100%;
-  touch-action: none;
-}
-.exercise-tools {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
+.exercise-area canvas { border: 2px solid #eee; border-radius: 12px; cursor: crosshair; max-width: 100%; touch-action: none; }
+.exercise-tools { display: flex; gap: 8px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
 .exercise-tools button {
-  padding: 8px 20px;
-  border: 2px solid #ddd;
-  background: transparent;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: var(--font-main);
-  font-size: 13px;
-  transition: all 0.3s;
+  padding: 8px 20px; border: 2px solid #ddd; background: transparent;
+  border-radius: 20px; cursor: pointer; font-family: var(--font-main);
+  font-size: 13px; transition: all 0.3s;
 }
-.exercise-tools button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.exercise-tools button:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ===== FOOTER ===== */
 footer {
-  text-align: center;
-  padding: 60px 24px;
-  color: var(--gray);
-  font-size: 13px;
-  border-top: 1px solid rgba(0,0,0,0.06);
+  text-align: center; padding: 60px 24px; color: var(--gray);
+  font-size: 13px; border-top: 1px solid rgba(0,0,0,0.06);
 }
 footer .footer-ah {
-  font-family: var(--font-display);
-  font-size: 48px;
-  font-weight: 900;
-  color: var(--accent);
-  opacity: 0.2;
-  margin-bottom: 16px;
+  font-family: var(--font-display); font-size: 48px; font-weight: 900;
+  color: var(--accent); opacity: 0.2; margin-bottom: 16px;
 }
 
 /* ===== SCROLL ANIMATIONS ===== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s, transform 0.6s;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* ===== UTILITY ===== */
 .text-center { text-align: center; }
 .mt-20 { margin-top: 20px; }
 .mb-20 { margin-bottom: 20px; }
 .btn-primary {
-  display: inline-block;
-  padding: 12px 32px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 24px;
-  cursor: pointer;
-  font-family: var(--font-main);
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s;
+  display: inline-block; padding: 12px 32px; background: var(--accent); color: #fff;
+  border: none; border-radius: 24px; cursor: pointer; font-family: var(--font-main);
+  font-size: 15px; font-weight: 500; transition: all 0.3s;
 }
-.btn-primary:hover {
-  background: #c62f3b;
-  transform: translateY(-2px);
-}
+.btn-primary:hover { background: #c62f3b; transform: translateY(-2px); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
@@ -708,45 +447,45 @@ footer .footer-ah {
   .card { padding: 24px; }
   .observe-item.expanded { grid-column: span 1; }
   nav a { padding: 12px 10px; font-size: 13px; }
+  .lang-switcher { top: 8px; right: 8px; }
+  .lang-switcher button { padding: 5px 10px; font-size: 12px; }
 }
 
 /* ===== SEPARATOR ===== */
-.sep {
-  width: 48px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
-  margin: 40px auto;
-  opacity: 0.4;
-}
+.sep { width: 48px; height: 4px; background: var(--accent); border-radius: 2px; margin: 40px auto; opacity: 0.4; }
 </style>
 </head>
 <body>
 
+<!-- ===== LANGUAGE SWITCHER ===== -->
+<div class="lang-switcher" id="langSwitcher">
+  <button class="active" onclick="setLang('zh')">中</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('ja')">日</button>
+</div>
+
 <!-- ===== HERO ===== -->
 <div class="hero">
-  <div class="hero-shapes">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="hero-ah" id="heroAh">嗨</div>
-  <h1>嗨设计</h1>
-  <p class="subtitle">设计，是让事物变得更好的思考方式。<br>从观察身边的一切开始，发现隐藏在日常中的美与智慧。</p>
-  <div class="scroll-hint">向下探索</div>
+  <div class="hero-shapes"><span></span><span></span><span></span></div>
+  <div class="hero-ah" id="heroAh" data-i18n="heroAh">嗨</div>
+  <h1 data-i18n="heroTitle">嗨设计</h1>
+  <p class="subtitle" data-i18n-html="heroSubtitle">设计，是让事物变得更好的思考方式。<br>从观察身边的一切开始，发现隐藏在日常中的美与智慧。</p>
+  <div class="scroll-hint" data-i18n="scrollHint">向下探索</div>
 </div>
 
 <!-- ===== NAV ===== -->
 <nav>
   <ul>
-    <li><a href="#observe">观察</a></li>
-    <li><a href="#deconstruct">拆解</a></li>
-    <li><a href="#collect">集合</a></li>
-    <li><a href="#typography">文字</a></li>
-    <li><a href="#layout">排版</a></li>
-    <li><a href="#pattern">纹样</a></li>
-    <li><a href="#arch">空间</a></li>
-    <li><a href="#principles">法则</a></li>
-    <li><a href="#designers">大师</a></li>
-    <li><a href="#exercise">动手</a></li>
+    <li><a href="#observe" data-i18n="navObserve">观察</a></li>
+    <li><a href="#deconstruct" data-i18n="navDeconstruct">拆解</a></li>
+    <li><a href="#collect" data-i18n="navCollect">集合</a></li>
+    <li><a href="#typography" data-i18n="navTypography">文字</a></li>
+    <li><a href="#layout" data-i18n="navLayout">排版</a></li>
+    <li><a href="#pattern" data-i18n="navPattern">纹样</a></li>
+    <li><a href="#arch" data-i18n="navArch">空间</a></li>
+    <li><a href="#principles" data-i18n="navPrinciples">法则</a></li>
+    <li><a href="#designers" data-i18n="navDesigners">大师</a></li>
+    <li><a href="#exercise" data-i18n="navExercise">动手</a></li>
   </ul>
 </nav>
 
@@ -754,70 +493,68 @@ footer .footer-ah {
 <section id="observe">
   <div class="section-header fade-up">
     <div class="section-num">01</div>
-    <h2>🔍 设计的观察</h2>
-    <p class="section-desc">仔细观察身边的事物，你会发现意想不到的美。一颗鸡蛋、一杯水、一片叶子——每一样都藏着精心设计。</p>
+    <h2 data-i18n="s1Title">🔍 设计的观察</h2>
+    <p class="section-desc" data-i18n="s1Desc">仔细观察身边的事物，你会发现意想不到的美。一颗鸡蛋、一杯水、一片叶子——每一样都藏着精心设计。</p>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">👁️</span> 看见看不见的设计</h3>
-    <p>日常生活中充满了被忽视的设计。点击下方物品，看看它们背后隐藏的设计智慧：</p>
+    <h3><span class="icon">👁️</span> <span data-i18n="s1Card1Title">看见看不见的设计</span></h3>
+    <p data-i18n="s1Card1Intro">日常生活中充满了被忽视的设计。点击下方物品，看看它们背后隐藏的设计智慧：</p>
     <div class="observe-gallery" style="margin-top:24px">
       <div class="observe-item" onclick="toggleObserve(this)">
         <span class="emoji">🥚</span>
-        <span class="name">鸡蛋</span>
-        <div class="detail">鸡蛋的椭圆造型是自然界最精妙的设计之一。蛋壳的弧度将压力均匀分散，让薄薄的壳能承受远超自身重量的压力。母鸡在孵化时不会压碎蛋，但小鸡从内部轻轻一啄就能破壳——内外受力的完美平衡。</div>
+        <span class="name" data-i18n="obsEgg">鸡蛋</span>
+        <div class="detail" data-i18n-html="obsEggDetail">鸡蛋的椭圆造型是自然界最精妙的设计之一。蛋壳的弧度将压力均匀分散，让薄薄的壳能承受远超自身重量的压力。母鸡在孵化时不会压碎蛋，但小鸡从内部轻轻一啄就能破壳——内外受力的完美平衡。</div>
       </div>
       <div class="observe-item" onclick="toggleObserve(this)">
         <span class="emoji">🍵</span>
-        <span class="name">茶杯</span>
-        <div class="detail">茶杯的把手为什么是环形的？因为它刚好容纳一根手指，让你端起时既稳当又不被杯壁烫到。杯底的圈足让杯子不直接接触桌面，防止热量散失过快，也让杯子更容易拿起来。</div>
+        <span class="name" data-i18n="obsCup">茶杯</span>
+        <div class="detail" data-i18n-html="obsCupDetail">茶杯的把手为什么是环形的？因为它刚好容纳一根手指，让你端起时既稳当又不被杯壁烫到。杯底的圈足让杯子不直接接触桌面，防止热量散失过快，也让杯子更容易拿起来。</div>
       </div>
       <div class="observe-item" onclick="toggleObserve(this)">
         <span class="emoji">🔑</span>
-        <span class="name">钥匙</span>
-        <div class="detail">钥匙的齿纹就像指纹——每把钥匙的锯齿高度和间距都不同，对应锁芯内弹子的排列。钥匙头部的圆孔让你挂在钥匙环上，扁平的形状方便插入锁孔，边缘的凹槽防止反向插入。</div>
+        <span class="name" data-i18n="obsKey">钥匙</span>
+        <div class="detail" data-i18n-html="obsKeyDetail">钥匙的齿纹就像指纹——每把钥匙的锯齿高度和间距都不同，对应锁芯内弹子的排列。钥匙头部的圆孔让你挂在钥匙环上，扁平的形状方便插入锁孔，边缘的凹槽防止反向插入。</div>
       </div>
       <div class="observe-item" onclick="toggleObserve(this)">
         <span class="emoji">📌</span>
-        <span class="name">回形针</span>
-        <div class="detail">回形针的三重弯曲设计，让它能同时夹住纸张的正面和背面。弹簧钢材质让它反复弯折也不会断。它不会像订书钉那样在纸上留下永久痕迹，也不会像胶带那样粘坏纸张——可逆、无伤、优雅。</div>
+        <span class="name" data-i18n="obsClip">回形针</span>
+        <div class="detail" data-i18n-html="obsClipDetail">回形针的三重弯曲设计，让它能同时夹住纸张的正面和背面。弹簧钢材质让它反复弯折也不会断。它不会像订书钉那样在纸上留下永久痕迹，也不会像胶带那样粘坏纸张——可逆、无伤、优雅。</div>
       </div>
       <div class="observe-item" onclick="toggleObserve(this)">
         <span class="emoji">🧲</span>
-        <span class="name">拉链</span>
-        <div class="detail">拉链的每个齿都有精确的凸凹槽，拉头经过时，凸槽和凹槽像拼图一样咬合在一起。这个发明改变了服装、箱包和无数产品的开合方式。一条小小的拉链，替代了几十个纽扣。</div>
+        <span class="name" data-i18n="obsZipper">拉链</span>
+        <div class="detail" data-i18n-html="obsZipperDetail">拉链的每个齿都有精确的凸凹槽，拉头经过时，凸槽和凹槽像拼图一样咬合在一起。这个发明改变了服装、箱包和无数产品的开合方式。一条小小的拉链，替代了几十个纽扣。</div>
       </div>
       <div class="observe-item" onclick="toggleObserve(this)">
         <span class="emoji">🍊</span>
-        <span class="name">橘子</span>
-        <div class="detail">橘子的瓣状结构是天然的"分装设计"。橘皮的纹理让手指容易抓握和剥开，白色橘络保护果肉不被碰伤，每一瓣都有薄膜包裹，汁水不会流出。从外观到内部，每一层都有明确的功能。</div>
+        <span class="name" data-i18n="obsOrange">橘子</span>
+        <div class="detail" data-i18n-html="obsOrangeDetail">橘子的瓣状结构是天然的"分装设计"。橘皮的纹理让手指容易抓握和剥开，白色橘络保护果肉不被碰伤，每一瓣都有薄膜包裹，汁水不会流出。从外观到内部，每一层都有明确的功能。</div>
       </div>
     </div>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">💡</span> 观察的方法</h3>
-    <p>好的设计师都有一套观察方法：</p>
+    <h3><span class="icon">💡</span> <span data-i18n="s1Card2Title">观察的方法</span></h3>
+    <p data-i18n="s1Card2Intro">好的设计师都有一套观察方法：</p>
     <div class="principle-list" style="margin-top:16px">
       <div class="principle">
         <div class="num">1</div>
         <div class="content">
-          <h4>放大细节</h4>
-          <p>把东西放大100倍来看。你会发现纸张的纤维、金属的晶粒、皮肤的纹理——微观世界本身就是一种设计。</p>
+          <h4 data-i18n="obsMethod1Title">放大细节</h4>
+          <p data-i18n="obsMethod1Desc">把东西放大100倍来看。你会发现纸张的纤维、金属的晶粒、皮肤的纹理——微观世界本身就是一种设计。</p>
         </div>
       </div>
       <div class="principle">
         <div class="num">2</div>
         <div class="content">
-          <h4>反转视角</h4>
-          <p>把东西倒过来看、从底部看、从内部看。一把椅子翻过来，你会看到底部的防滑垫、螺丝的排列方式——这些都是有意为之。</p>
+          <h4 data-i18n="obsMethod2Title">反转视角</h4>
+          <p data-i18n="obsMethod2Desc">把东西倒过来看、从底部看、从内部看。一把椅子翻过来，你会看到底部的防滑垫、螺丝的排列方式——这些都是有意为之。</p>
         </div>
       </div>
       <div class="principle">
         <div class="num">3</div>
         <div class="content">
-          <h4>比较差异</h4>
-          <p>同一种东西，不同的设计：同样是杯子，为什么茶杯、咖啡杯、红酒杯形状不同？差异背后就是设计的逻辑。</p>
+          <h4 data-i18n="obsMethod3Title">比较差异</h4>
+          <p data-i18n="obsMethod3Desc">同一种东西，不同的设计：同样是杯子，为什么茶杯、咖啡杯、红酒杯形状不同？差异背后就是设计的逻辑。</p>
         </div>
       </div>
     </div>
@@ -830,38 +567,36 @@ footer .footer-ah {
 <section id="deconstruct">
   <div class="section-header fade-up">
     <div class="section-num">02</div>
-    <h2>🔧 拆解</h2>
-    <p class="section-desc">把一件东西拆开，看看它由什么组成。当你把日常物品分解成一个个零件，你会惊叹于它的精密和巧思。</p>
+    <h2 data-i18n="s2Title">🔧 拆解</h2>
+    <p class="section-desc" data-i18n="s2Desc">把一件东西拆开，看看它由什么组成。当你把日常物品分解成一个个零件，你会惊叹于它的精密和巧思。</p>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">⚙️</span> 互动拆解</h3>
-    <p>选择一件物品，点击"拆解"看它如何被分解成各个组成部分：</p>
+    <h3><span class="icon">⚙️</span> <span data-i18n="s2Card1Title">互动拆解</span></h3>
+    <p data-i18n="s2Card1Intro">选择一件物品，点击"拆解"看它如何被分解成各个组成部分：</p>
     <div class="decon-controls">
-      <button class="decon-btn active" onclick="switchDecon('pencil')">✏️ 铅笔</button>
-      <button class="decon-btn" onclick="switchDecon('bento')">🍱 便当盒</button>
-      <button class="decon-btn" onclick="switchDecon('book')">📚 一本书</button>
+      <button class="decon-btn active" onclick="switchDecon('pencil')" data-i18n="deconBtnPencil">✏️ 铅笔</button>
+      <button class="decon-btn" onclick="switchDecon('bento')" data-i18n="deconBtnBento">🍱 便当盒</button>
+      <button class="decon-btn" onclick="switchDecon('book')" data-i18n="deconBtnBook">📚 一本书</button>
     </div>
     <div class="decon-stage" id="deconStage" style="margin-top:24px">
       <div class="decon-item" id="deconItem"></div>
-      <div class="decon-label" id="deconLabel">点击物品开始拆解</div>
+      <div class="decon-label" id="deconLabel"></div>
     </div>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">🧠</span> 拆解教会我们什么？</h3>
+    <h3><span class="icon">🧠</span> <span data-i18n="s2Card2Title">拆解教会我们什么？</span></h3>
     <div class="card-grid">
       <div style="padding:20px;background:var(--light);border-radius:12px">
-        <h4 style="font-size:16px;margin-bottom:8px">🔩 每个零件都有功能</h4>
-        <p style="font-size:14px;color:var(--gray)">拆开一把雨伞：伞骨负责支撑，弹簧负责开合，伞面负责遮雨。没有一个零件是多余的。</p>
+        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="deconLearn1Title">🔩 每个零件都有功能</h4>
+        <p style="font-size:14px;color:var(--gray)" data-i18n="deconLearn1Desc">拆开一把雨伞：伞骨负责支撑，弹簧负责开合，伞面负责遮雨。没有一个零件是多余的。</p>
       </div>
       <div style="padding:20px;background:var(--light);border-radius:12px">
-        <h4 style="font-size:16px;margin-bottom:8px">📐 材料选择有道理</h4>
-        <p style="font-size:14px;color:var(--gray)">为什么铅笔的笔芯用石墨？因为石墨软硬适中，能在纸上留下痕迹又不会太脆。每个材料的选择都经过深思熟虑。</p>
+        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="deconLearn2Title">📐 材料选择有道理</h4>
+        <p style="font-size:14px;color:var(--gray)" data-i18n="deconLearn2Desc">为什么铅笔的笔芯用石墨？因为石墨软硬适中，能在纸上留下痕迹又不会太脆。每个材料的选择都经过深思熟虑。</p>
       </div>
       <div style="padding:20px;background:var(--light);border-radius:12px">
-        <h4 style="font-size:16px;margin-bottom:8px">🔄 组装顺序很重要</h4>
-        <p style="font-size:14px;color:var(--gray)">便当盒的每个隔层都有固定位置，书的书脊、封面、内页按特定顺序粘合。拆解再组装，理解事物的逻辑关系。</p>
+        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="deconLearn3Title">🔄 组装顺序很重要</h4>
+        <p style="font-size:14px;color:var(--gray)" data-i18n="deconLearn3Desc">便当盒的每个隔层都有固定位置，书的书脊、封面、内页按特定顺序粘合。拆解再组装，理解事物的逻辑关系。</p>
       </div>
     </div>
   </div>
@@ -873,36 +608,34 @@ footer .footer-ah {
 <section id="collect">
   <div class="section-header fade-up">
     <div class="section-num">03</div>
-    <h2>🧩 集合！</h2>
-    <p class="section-desc">把很多同类的东西收集到一起，排列整齐。你会看到规律、差异和意想不到的美。</p>
+    <h2 data-i18n="s3Title">🧩 集合！</h2>
+    <p class="section-desc" data-i18n="s3Desc">把很多同类的东西收集到一起，排列整齐。你会看到规律、差异和意想不到的美。</p>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">🎨</span> 互动集合</h3>
-    <p>点击"排列"按钮，看混乱的元素如何被整理成有序的图案：</p>
+    <h3><span class="icon">🎨</span> <span data-i18n="s3Card1Title">互动集合</span></h3>
+    <p data-i18n="s3Card1Intro">点击"排列"按钮，看混乱的元素如何被整理成有序的图案：</p>
     <div class="collection-zone" id="collectionZone"></div>
     <div class="collection-controls">
-      <button class="btn-primary" onclick="shuffleCollection()">🎲 打乱</button>
-      <button class="btn-primary" onclick="sortCollection('color')" style="background:var(--accent2)">按颜色排列</button>
-      <button class="btn-primary" onclick="sortCollection('size')" style="background:var(--accent3)">按大小排列</button>
-      <button class="btn-primary" onclick="sortCollection('type')" style="background:#8B5CF6">按类型排列</button>
+      <button class="btn-primary" onclick="shuffleCollection()" data-i18n="collShuffle">🎲 打乱</button>
+      <button class="btn-primary" onclick="sortCollection('color')" style="background:var(--accent2)" data-i18n="collColor">按颜色排列</button>
+      <button class="btn-primary" onclick="sortCollection('size')" style="background:var(--accent3)" data-i18n="collSize">按大小排列</button>
+      <button class="btn-primary" onclick="sortCollection('type')" style="background:#8B5CF6" data-i18n="collType">按类型排列</button>
     </div>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">📊</span> 集合中发现的规律</h3>
+    <h3><span class="icon">📊</span> <span data-i18n="s3Card2Title">集合中发现的规律</span></h3>
     <div class="card-grid">
       <div style="padding:20px;background:#FFF3E0;border-radius:12px">
-        <h4 style="font-size:16px;margin-bottom:8px">🔤 文字的集合</h4>
-        <p style="font-size:14px;color:var(--gray)">把同一字体的所有字母排列在一起，你会发现它们有统一的"骨架"——这就是字体的DNA。</p>
+        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="collPattern1Title">🔤 文字的集合</h4>
+        <p style="font-size:14px;color:var(--gray)" data-i18n="collPattern1Desc">把同一字体的所有字母排列在一起，你会发现它们有统一的"骨架"——这就是字体的DNA。</p>
       </div>
       <div style="padding:20px;background:#E8F5E9;border-radius:12px">
-        <h4 style="font-size:16px;margin-bottom:8px">🍎 水果的集合</h4>
-        <p style="font-size:14px;color:var(--gray)">把所有水果放在一起比较：颜色从绿到红到紫，大小从蓝莓到西瓜。自然界的"设计谱"一目了然。</p>
+        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="collPattern2Title">🍎 水果的集合</h4>
+        <p style="font-size:14px;color:var(--gray)" data-i18n="collPattern2Desc">把所有水果放在一起比较：颜色从绿到红到紫，大小从蓝莓到西瓜。自然界的"设计谱"一目了然。</p>
       </div>
       <div style="padding:20px;background:#E3F2FD;border-radius:12px">
-        <h4 style="font-size:16px;margin-bottom:8px">🪑 椅子的集合</h4>
-        <p style="font-size:14px;color:var(--gray)">收集100把不同时代的椅子，你会看到材料从木头到金属到塑料的演变，以及人体工学如何影响造型。</p>
+        <h4 style="font-size:16px;margin-bottom:8px" data-i18n="collPattern3Title">🪑 椅子的集合</h4>
+        <p style="font-size:14px;color:var(--gray)" data-i18n="collPattern3Desc">收集100把不同时代的椅子，你会看到材料从木头到金属到塑料的演变，以及人体工学如何影响造型。</p>
       </div>
     </div>
   </div>
@@ -914,57 +647,54 @@ footer .footer-ah {
 <section id="typography">
   <div class="section-header fade-up">
     <div class="section-num">04</div>
-    <h2>🔤 文字图形</h2>
-    <p class="section-desc">文字不只是用来"读"的，更是用来"看"的。字的形状、大小、间距，都在传递信息。</p>
+    <h2 data-i18n="s4Title">🔤 文字图形</h2>
+    <p class="section-desc" data-i18n="s4Desc">文字不只是用来"读"的，更是用来"看"的。字的形状、大小、间距，都在传递信息。</p>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">🎚️</span> 互动：感受字重的力量</h3>
-    <p>拖动滑块改变文字粗细，感受同一个字在不同字重下的情绪变化：</p>
+    <h3><span class="icon">🎚️</span> <span data-i18n="s4Card1Title">互动：感受字重的力量</span></h3>
+    <p data-i18n="s4Card1Intro">拖动滑块改变文字粗细，感受同一个字在不同字重下的情绪变化：</p>
     <div class="typo-demo">
-      <div class="typo-display" id="typoDisplay">设计改变世界</div>
+      <div class="typo-display" id="typoDisplay" data-i18n="typoSample">设计改变世界</div>
       <div class="typo-slider-container">
         <input type="range" class="typo-slider" id="typoWeight" min="100" max="900" value="400" step="100" oninput="updateTypo()">
         <div class="typo-label">
-          <span>极细</span>
-          <span>常规</span>
-          <span>极粗</span>
+          <span data-i18n="typoThin">极细</span>
+          <span data-i18n="typoRegular">常规</span>
+          <span data-i18n="typoBold">极粗</span>
         </div>
       </div>
     </div>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">📏</span> 字间距的魔法</h3>
-    <p>同一个词，不同的字间距，传达完全不同的感受：</p>
+    <h3><span class="icon">📏</span> <span data-i18n="s4Card2Title">字间距的魔法</span></h3>
+    <p data-i18n="s4Card2Intro">同一个词，不同的字间距，传达完全不同的感受：</p>
     <div style="margin-top:24px;display:flex;flex-direction:column;gap:20px;align-items:center">
-      <div style="font-size:32px;font-weight:700;letter-spacing:-2px">紧凑有力</div>
-      <div style="font-size:32px;font-weight:700;letter-spacing:0">自然舒适</div>
-      <div style="font-size:32px;font-weight:700;letter-spacing:8px">优 雅 呼 吸</div>
-      <div style="font-size:32px;font-weight:700;letter-spacing:20px">极 简 留 白</div>
+      <div style="font-size:32px;font-weight:700;letter-spacing:-2px" data-i18n="spacingTight">紧凑有力</div>
+      <div style="font-size:32px;font-weight:700;letter-spacing:0" data-i18n="spacingNormal">自然舒适</div>
+      <div style="font-size:32px;font-weight:700;letter-spacing:8px" data-i18n="spacingWide">优 雅 呼 吸</div>
+      <div style="font-size:32px;font-weight:700;letter-spacing:20px" data-i18n="spacingUltra">极 简 留 白</div>
     </div>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">🎵</span> 排版之歌</h3>
-    <p>《嗨设计》中最受欢迎的MV之一。野村律子创作的这首歌曲，用歌声和画面展示排版如何让信息更清晰：</p>
+    <h3><span class="icon">🎵</span> <span data-i18n="s4Card3Title">排版之歌</span></h3>
+    <p data-i18n="s4Card3Intro">《嗨设计》中最受欢迎的MV之一。野村律子创作的这首歌曲，用歌声和画面展示排版如何让信息更清晰：</p>
     <div style="margin-top:20px;background:var(--light);border-radius:12px;padding:24px">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
         <div>
-          <h4 style="font-size:15px;margin-bottom:8px">📋 对齐</h4>
-          <p style="font-size:13px;color:var(--gray)">左对齐、居中、两端对齐——不同的对齐方式带来不同的视觉节奏。</p>
+          <h4 style="font-size:15px;margin-bottom:8px" data-i18n="typoPrinciple1Title">📋 对齐</h4>
+          <p style="font-size:13px;color:var(--gray)" data-i18n="typoPrinciple1Desc">左对齐、居中、两端对齐——不同的对齐方式带来不同的视觉节奏。</p>
         </div>
         <div>
-          <h4 style="font-size:15px;margin-bottom:8px">📐 层级</h4>
-          <p style="font-size:13px;color:var(--gray)">大标题→小标题→正文——用大小和粗细建立信息的重要性层级。</p>
+          <h4 style="font-size:15px;margin-bottom:8px" data-i18n="typoPrinciple2Title">📐 层级</h4>
+          <p style="font-size:13px;color:var(--gray)" data-i18n="typoPrinciple2Desc">大标题→小标题→正文——用大小和粗细建立信息的重要性层级。</p>
         </div>
         <div>
-          <h4 style="font-size:15px;margin-bottom:8px">⬜ 留白</h4>
-          <p style="font-size:13px;color:var(--gray)">文字周围的空间不是"空的"，是让内容呼吸的"设计空间"。</p>
+          <h4 style="font-size:15px;margin-bottom:8px" data-i18n="typoPrinciple3Title">⬜ 留白</h4>
+          <p style="font-size:13px;color:var(--gray)" data-i18n="typoPrinciple3Desc">文字周围的空间不是"空的"，是让内容呼吸的"设计空间"。</p>
         </div>
         <div>
-          <h4 style="font-size:15px;margin-bottom:8px">🎯 聚焦</h4>
-          <p style="font-size:13px;color:var(--gray)">通过颜色和对比度，引导读者的视线先看哪里、后看哪里。</p>
+          <h4 style="font-size:15px;margin-bottom:8px" data-i18n="typoPrinciple4Title">🎯 聚焦</h4>
+          <p style="font-size:13px;color:var(--gray)" data-i18n="typoPrinciple4Desc">通过颜色和对比度，引导读者的视线先看哪里、后看哪里。</p>
         </div>
       </div>
     </div>
@@ -977,53 +707,47 @@ footer .footer-ah {
 <section id="layout">
   <div class="section-header fade-up">
     <div class="section-num">05</div>
-    <h2>📐 排版设计</h2>
-    <p class="section-desc">好的排版让信息一目了然，差的排版让人头疼。对比一下两种排列方式：</p>
+    <h2 data-i18n="s5Title">📐 排版设计</h2>
+    <p class="section-desc" data-i18n="s5Desc">好的排版让信息一目了然，差的排版让人头疼。对比一下两种排列方式：</p>
   </div>
-
   <div class="layout-compare fade-up">
     <div class="layout-box bad">
-      <div class="tag">❌ 差的排版</div>
-      <div style="font-size:11px;line-height:1.3;font-family:monospace;word-break:break-all;color:#666">
-        紧急通知明天下午三点在大会议室开全体员工大会请准时参加不要迟到带好笔记本和笔记录会议内容会后提交总结报告给部门负责人
-      </div>
+      <div class="tag" data-i18n="layoutBad">❌ 差的排版</div>
+      <div style="font-size:11px;line-height:1.3;font-family:monospace;word-break:break-all;color:#666" data-i18n="layoutBadText">紧急通知明天下午三点在大会议室开全体员工大会请准时参加不要迟到带好笔记本和笔记录会议内容会后提交总结报告给部门负责人</div>
     </div>
     <div class="layout-box good">
-      <div class="tag">✅ 好的排版</div>
-      <div>
+      <div class="tag" data-i18n="layoutGood">✅ 好的排版</div>
+      <div data-i18n-html="layoutGoodContent">
         <div style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:8px">📢 紧急通知</div>
         <div style="font-size:14px;margin-bottom:4px"><strong>时间：</strong>明天 下午 3:00</div>
         <div style="font-size:14px;margin-bottom:4px"><strong>地点：</strong>大会议室</div>
         <div style="font-size:14px;margin-bottom:4px"><strong>参与：</strong>全体员工</div>
-        <div style="font-size:13px;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed #ddd">
-          ⚠️ 请准时参加，带好笔记本和笔<br>📝 会后提交总结报告给部门负责人
-        </div>
+        <div style="font-size:13px;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed #ddd">⚠️ 请准时参加，带好笔记本和笔<br>📝 会后提交总结报告给部门负责人</div>
       </div>
     </div>
   </div>
-
   <div class="card fade-up" style="margin-top:32px">
-    <h3><span class="icon">🗂️</span> 排版的四大法则</h3>
+    <h3><span class="icon">🗂️</span> <span data-i18n="s5CardTitle">排版的四大法则</span></h3>
     <div class="card-grid" style="margin-top:16px">
       <div style="padding:20px;background:#FFF8E1;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">↔️</div>
-        <h4 style="font-size:15px;margin-bottom:6px">对齐</h4>
-        <p style="font-size:13px;color:var(--gray)">所有元素沿一条看不见的线排列，创造秩序感。</p>
+        <h4 style="font-size:15px;margin-bottom:6px" data-i18n="layoutRule1Title">对齐</h4>
+        <p style="font-size:13px;color:var(--gray)" data-i18n="layoutRule1Desc">所有元素沿一条看不见的线排列，创造秩序感。</p>
       </div>
       <div style="padding:20px;background:#E8EAF6;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">📏</div>
-        <h4 style="font-size:15px;margin-bottom:6px">对比</h4>
-        <p style="font-size:13px;color:var(--gray)">重要的东西更大、更粗、更亮，让视线有重点。</p>
+        <h4 style="font-size:15px;margin-bottom:6px" data-i18n="layoutRule2Title">对比</h4>
+        <p style="font-size:13px;color:var(--gray)" data-i18n="layoutRule2Desc">重要的东西更大、更粗、更亮，让视线有重点。</p>
       </div>
       <div style="padding:20px;background:#E0F7FA;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">🔁</div>
-        <h4 style="font-size:15px;margin-bottom:6px">重复</h4>
-        <p style="font-size:13px;color:var(--gray)">相同的样式反复出现，建立统一的视觉语言。</p>
+        <h4 style="font-size:15px;margin-bottom:6px" data-i18n="layoutRule3Title">重复</h4>
+        <p style="font-size:13px;color:var(--gray)" data-i18n="layoutRule3Desc">相同的样式反复出现，建立统一的视觉语言。</p>
       </div>
       <div style="padding:20px;background:#F3E5F5;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">↕️</div>
-        <h4 style="font-size:15px;margin-bottom:6px">亲密</h4>
-        <p style="font-size:13px;color:var(--gray)">相关的内容靠在一起，不相关的分开，自然分组。</p>
+        <h4 style="font-size:15px;margin-bottom:6px" data-i18n="layoutRule4Title">亲密</h4>
+        <p style="font-size:13px;color:var(--gray)" data-i18n="layoutRule4Desc">相关的内容靠在一起，不相关的分开，自然分组。</p>
       </div>
     </div>
   </div>
@@ -1035,42 +759,40 @@ footer .footer-ah {
 <section id="pattern">
   <div class="section-header fade-up">
     <div class="section-num">06</div>
-    <h2>🔶 纹样 — 图案的秘密</h2>
-    <p class="section-desc">纹样是重复排列的图案。从古代的陶器纹饰到现代的布料印花，纹样是人类最古老的设计语言之一。</p>
+    <h2 data-i18n="s6Title">🔶 纹样 — 图案的秘密</h2>
+    <p class="section-desc" data-i18n="s6Desc">纹样是重复排列的图案。从古代的陶器纹饰到现代的布料印花，纹样是人类最古老的设计语言之一。</p>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">🔲</span> 互动：点击变换纹样</h3>
-    <p>点击每个方块旋转它，创造你自己的纹样图案：</p>
+    <h3><span class="icon">🔲</span> <span data-i18n="s6Card1Title">互动：点击变换纹样</span></h3>
+    <p data-i18n="s6Card1Intro">点击每个方块旋转它，创造你自己的纹样图案：</p>
     <div class="pattern-grid" id="patternGrid" style="margin-top:20px"></div>
     <div style="text-align:center;margin-top:16px">
-      <button class="btn-primary" onclick="randomizePattern()">🎲 随机纹样</button>
-      <button class="btn-primary" onclick="resetPattern()" style="background:var(--accent2)">🔄 重置</button>
+      <button class="btn-primary" onclick="randomizePattern()" data-i18n="patternRandom">🎲 随机纹样</button>
+      <button class="btn-primary" onclick="resetPattern()" style="background:var(--accent2)" data-i18n="patternReset">🔄 重置</button>
     </div>
   </div>
-
   <div class="card fade-up">
-    <h3><span class="icon">🌍</span> 世界各地的纹样</h3>
+    <h3><span class="icon">🌍</span> <span data-i18n="s6Card2Title">世界各地的纹样</span></h3>
     <div class="card-grid">
       <div style="padding:20px;background:#FFF3E0;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">🏯</div>
-        <h4 style="font-size:15px">日本 · 市松纹样</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">黑白相间的方格图案，2020东京奥运会会徽的灵感来源。</p>
+        <h4 style="font-size:15px" data-i18n="patternJP">日本 · 市松纹样</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="patternJPDesc">黑白相间的方格图案，2020东京奥运会会徽的灵感来源。</p>
       </div>
       <div style="padding:20px;background:#E8F5E9;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">🕌</div>
-        <h4 style="font-size:15px">伊斯兰 · 几何纹样</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">基于数学的精密几何图案，无限重复、无限变化。</p>
+        <h4 style="font-size:15px" data-i18n="patternIslam">伊斯兰 · 几何纹样</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="patternIslamDesc">基于数学的精密几何图案，无限重复、无限变化。</p>
       </div>
       <div style="padding:20px;background:#E3F2FD;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">🏺</div>
-        <h4 style="font-size:15px">中国 · 回纹</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">连续回旋的方形线条，象征富贵绵长、生生不息。</p>
+        <h4 style="font-size:15px" data-i18n="patternCN">中国 · 回纹</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="patternCNDesc">连续回旋的方形线条，象征富贵绵长、生生不息。</p>
       </div>
       <div style="padding:20px;background:#FCE4EC;border-radius:12px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">🏛️</div>
-        <h4 style="font-size:15px">希腊 · 回字纹</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">又称"希腊钥匙纹"，连续不断的折线，象征永恒。</p>
+        <h4 style="font-size:15px" data-i18n="patternGR">希腊 · 回字纹</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="patternGRDesc">又称"希腊钥匙纹"，连续不断的折线，象征永恒。</p>
       </div>
     </div>
   </div>
@@ -1082,51 +804,50 @@ footer .footer-ah {
 <section id="arch">
   <div class="section-header fade-up">
     <div class="section-num">07</div>
-    <h2>🏗️ 空间设计</h2>
-    <p class="section-desc">建筑和空间的设计，决定了我们在其中的感受。空间不只是"空的"，它是被精心塑造的体验。</p>
+    <h2 data-i18n="s7Title">🏗️ 空间设计</h2>
+    <p class="section-desc" data-i18n="s7Desc">建筑和空间的设计，决定了我们在其中的感受。空间不只是"空的"，它是被精心塑造的体验。</p>
   </div>
-
   <div class="arch-gallery fade-up">
     <div class="arch-card">
       <div class="arch-visual" style="background:linear-gradient(135deg,#667eea,#764ba2)">🏛️</div>
       <div class="arch-info">
-        <h4>对称与庄重</h4>
-        <p>古典建筑的左右对称传递庄严和稳定感。故宫、帕特农神庙都用对称来表达权力与秩序。</p>
+        <h4 data-i18n="arch1Title">对称与庄重</h4>
+        <p data-i18n="arch1Desc">古典建筑的左右对称传递庄严和稳定感。故宫、帕特农神庙都用对称来表达权力与秩序。</p>
       </div>
     </div>
     <div class="arch-card">
       <div class="arch-visual" style="background:linear-gradient(135deg,#f093fb,#f5576c)">🌳</div>
       <div class="arch-info">
-        <h4>自然与建筑</h4>
-        <p>隈研吾的"负建筑"理念：建筑不应该对抗自然，而应该融入其中。木头、竹子、纸张都是好材料。</p>
+        <h4 data-i18n="arch2Title">自然与建筑</h4>
+        <p data-i18n="arch2Desc">隈研吾的"负建筑"理念：建筑不应该对抗自然，而应该融入其中。木头、竹子、纸张都是好材料。</p>
       </div>
     </div>
     <div class="arch-card">
       <div class="arch-visual" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">💡</div>
       <div class="arch-info">
-        <h4>光与空间</h4>
-        <p>安藤忠雄的"光之教堂"：在混凝土墙上切出十字形的缝隙，让自然光成为空间的灵魂。</p>
+        <h4 data-i18n="arch3Title">光与空间</h4>
+        <p data-i18n="arch3Desc">安藤忠雄的"光之教堂"：在混凝土墙上切出十字形的缝隙，让自然光成为空间的灵魂。</p>
       </div>
     </div>
     <div class="arch-card">
       <div class="arch-visual" style="background:linear-gradient(135deg,#a8edea,#fed6e3)">🚶</div>
       <div class="arch-info">
-        <h4>动线设计</h4>
-        <p>人在空间中移动的路径叫"动线"。好的动线让你自然而然地走到想去的地方，不需要指示牌。</p>
+        <h4 data-i18n="arch4Title">动线设计</h4>
+        <p data-i18n="arch4Desc">人在空间中移动的路径叫"动线"。好的动线让你自然而然地走到想去的地方，不需要指示牌。</p>
       </div>
     </div>
     <div class="arch-card">
       <div class="arch-visual" style="background:linear-gradient(135deg,#ffecd2,#fcb69f)">📐</div>
       <div class="arch-info">
-        <h4>尺度与比例</h4>
-        <p>天花板的高度、门的大小、窗户的位置——这些数字不是随意决定的，而是根据人体比例精心计算。</p>
+        <h4 data-i18n="arch5Title">尺度与比例</h4>
+        <p data-i18n="arch5Desc">天花板的高度、门的大小、窗户的位置——这些数字不是随意决定的，而是根据人体比例精心计算。</p>
       </div>
     </div>
     <div class="arch-card">
       <div class="arch-visual" style="background:linear-gradient(135deg,#d4fc79,#96e6a1)">🌊</div>
       <div class="arch-info">
-        <h4>内外之间</h4>
-        <p>日本建筑的"灰空间"概念：室内和室外之间的过渡空间（如廊下/走廊），让人既在屋里又感受自然。</p>
+        <h4 data-i18n="arch6Title">内外之间</h4>
+        <p data-i18n="arch6Desc">日本建筑的"灰空间"概念：室内和室外之间的过渡空间（如廊下/走廊），让人既在屋里又感受自然。</p>
       </div>
     </div>
   </div>
@@ -1138,79 +859,78 @@ footer .footer-ah {
 <section id="principles">
   <div class="section-header fade-up">
     <div class="section-num">08</div>
-    <h2>📖 设计的十大法则</h2>
-    <p class="section-desc">从《嗨设计》中提炼出的核心设计原则。掌握这些法则，你就能理解为什么有些设计让人舒服，有些让人别扭。</p>
+    <h2 data-i18n="s8Title">📖 设计的十大法则</h2>
+    <p class="section-desc" data-i18n="s8Desc">从《嗨设计》中提炼出的核心设计原则。掌握这些法则，你就能理解为什么有些设计让人舒服，有些让人别扭。</p>
   </div>
-
   <div class="principle-list fade-up">
     <div class="principle">
       <div class="num">1</div>
       <div class="content">
-        <h4>观察是设计的起点</h4>
-        <p>好的设计从仔细观察开始。在看一件东西之前，先问自己：它为什么是这个形状？这个颜色？这个大小？</p>
+        <h4 data-i18n="rule1Title">观察是设计的起点</h4>
+        <p data-i18n="rule1Desc">好的设计从仔细观察开始。在看一件东西之前，先问自己：它为什么是这个形状？这个颜色？这个大小？</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">2</div>
       <div class="content">
-        <h4>形式追随功能</h4>
-        <p>一个东西的外形应该服务于它的功能。茶壶的壶嘴朝上翘是为了倒水，壶柄远离壶身是为了不烫手。</p>
+        <h4 data-i18n="rule2Title">形式追随功能</h4>
+        <p data-i18n="rule2Desc">一个东西的外形应该服务于它的功能。茶壶的壶嘴朝上翘是为了倒水，壶柄远离壶身是为了不烫手。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">3</div>
       <div class="content">
-        <h4>少即是多</h4>
-        <p>去掉所有不必要的东西。如果一个元素去掉后不影响功能，那它就应该被去掉。简洁不是简陋。</p>
+        <h4 data-i18n="rule3Title">少即是多</h4>
+        <p data-i18n="rule3Desc">去掉所有不必要的东西。如果一个元素去掉后不影响功能，那它就应该被去掉。简洁不是简陋。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">4</div>
       <div class="content">
-        <h4>对比产生焦点</h4>
-        <p>如果所有东西都一样大、一样粗、一样亮，就没有重点。通过对比（大/小、粗/细、明/暗），让最重要的信息最先被看到。</p>
+        <h4 data-i18n="rule4Title">对比产生焦点</h4>
+        <p data-i18n="rule4Desc">如果所有东西都一样大、一样粗、一样亮，就没有重点。通过对比（大/小、粗/细、明/暗），让最重要的信息最先被看到。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">5</div>
       <div class="content">
-        <h4>重复建立节奏</h4>
-        <p>同样的元素反复出现（颜色、形状、间距），创造视觉的统一感和韵律感。这就是为什么纹样让人看着舒服。</p>
+        <h4 data-i18n="rule5Title">重复建立节奏</h4>
+        <p data-i18n="rule5Desc">同样的元素反复出现（颜色、形状、间距），创造视觉的统一感和韵律感。这就是为什么纹样让人看着舒服。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">6</div>
       <div class="content">
-        <h4>留白是设计的一部分</h4>
-        <p>空着的地方不是"浪费"，而是让有内容的地方更突出。好的设计懂得什么时候不说话。</p>
+        <h4 data-i18n="rule6Title">留白是设计的一部分</h4>
+        <p data-i18n="rule6Desc">空着的地方不是"浪费"，而是让有内容的地方更突出。好的设计懂得什么时候不说话。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">7</div>
       <div class="content">
-        <h4>以用户为中心</h4>
-        <p>设计不是自我表达，而是为使用者服务。门把手应该让所有人都容易拉开，包括小孩和老人。</p>
+        <h4 data-i18n="rule7Title">以用户为中心</h4>
+        <p data-i18n="rule7Desc">设计不是自我表达，而是为使用者服务。门把手应该让所有人都容易拉开，包括小孩和老人。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">8</div>
       <div class="content">
-        <h4>细节决定品质</h4>
-        <p>一个按钮的圆角弧度、一条线的粗细、两个元素之间的距离——这些微小的细节加在一起，决定了整体感受。</p>
+        <h4 data-i18n="rule8Title">细节决定品质</h4>
+        <p data-i18n="rule8Desc">一个按钮的圆角弧度、一条线的粗细、两个元素之间的距离——这些微小的细节加在一起，决定了整体感受。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">9</div>
       <div class="content">
-        <h4>限制激发创意</h4>
-        <p>有限制才有创造力。一张A4纸的限制让你思考如何精炼信息，一种颜色的限制让你思考如何用深浅变化表达层次。</p>
+        <h4 data-i18n="rule9Title">限制激发创意</h4>
+        <p data-i18n="rule9Desc">有限制才有创造力。一张A4纸的限制让你思考如何精炼信息，一种颜色的限制让你思考如何用深浅变化表达层次。</p>
       </div>
     </div>
     <div class="principle">
       <div class="num">10</div>
       <div class="content">
-        <h4>好设计是看不见的</h4>
-        <p>最好的设计是你不会注意到的。你不会注意到一个好用的门把手，但一定会为一个难用的门把手感到困扰。</p>
+        <h4 data-i18n="rule10Title">好设计是看不见的</h4>
+        <p data-i18n="rule10Desc">最好的设计是你不会注意到的。你不会注意到一个好用的门把手，但一定会为一个难用的门把手感到困扰。</p>
       </div>
     </div>
   </div>
@@ -1222,82 +942,81 @@ footer .footer-ah {
 <section id="designers">
   <div class="section-header fade-up">
     <div class="section-num">09</div>
-    <h2>👨‍🎨 设计大师的话</h2>
-    <p class="section-desc">来自世界各地的顶尖设计师分享他们的设计哲学。这里收录了他们最精华的设计思考。</p>
+    <h2 data-i18n="s9Title">👨‍🎨 设计大师的话</h2>
+    <p class="section-desc" data-i18n="s9Desc">来自世界各地的顶尖设计师分享他们的设计哲学。这里收录了他们最精华的设计思考。</p>
   </div>
-
   <div class="designer-grid fade-up">
     <div class="designer-card">
       <div class="avatar" style="background:#E8F5E9">🏗️</div>
-      <h4>隈研吾</h4>
-      <div class="field">建筑师</div>
-      <div class="quote">"不要试图让建筑变得强大，让它谦逊地融入环境，这才是真正的设计。"</div>
+      <h4 data-i18n="designer1Name">隈研吾</h4>
+      <div class="field" data-i18n="designer1Field">建筑师</div>
+      <div class="quote" data-i18n="designer1Quote">"不要试图让建筑变得强大，让它谦逊地融入环境，这才是真正的设计。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#E3F2FD">🎨</div>
-      <h4>原研哉</h4>
-      <div class="field">平面设计师 · 无印良品</div>
-      <div class="quote">"设计不是装饰，而是让事物本质更加清晰的手段。白色不是空无，而是无限可能。"</div>
+      <h4 data-i18n="designer2Name">原研哉</h4>
+      <div class="field" data-i18n="designer2Field">平面设计师 · 无印良品</div>
+      <div class="quote" data-i18n="designer2Quote">"设计不是装饰，而是让事物本质更加清晰的手段。白色不是空无，而是无限可能。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#FFF3E0">✨</div>
-      <h4>深泽直人</h4>
-      <div class="field">产品设计师 · 无印良品</div>
-      <div class="quote">"好的设计应该让人无需思考就能使用。把伞靠在墙边时自然找到凹槽——这就是无意识设计。"</div>
+      <h4 data-i18n="designer3Name">深泽直人</h4>
+      <div class="field" data-i18n="designer3Field">产品设计师 · 无印良品</div>
+      <div class="quote" data-i18n="designer3Quote">"好的设计应该让人无需思考就能使用。把伞靠在墙边时自然找到凹槽——这就是无意识设计。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#FCE4EC">🔤</div>
-      <h4>仲条正义</h4>
-      <div class="field">平面设计师 · 资生堂</div>
-      <div class="quote">"文字的形状本身就在说话。选择字体就是在选择说话的声音和语气。"</div>
+      <h4 data-i18n="designer4Name">仲条正义</h4>
+      <div class="field" data-i18n="designer4Field">平面设计师 · 资生堂</div>
+      <div class="quote" data-i18n="designer4Quote">"文字的形状本身就在说话。选择字体就是在选择说话的声音和语气。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#F3E5F5">🌐</div>
-      <h4>伊东丰雄</h4>
-      <div class="field">建筑师 · 普利兹克奖</div>
-      <div class="quote">"建筑应该像风一样轻柔地存在于空间中，而不是沉重地压在地面上。"</div>
+      <h4 data-i18n="designer5Name">伊东丰雄</h4>
+      <div class="field" data-i18n="designer5Field">建筑师 · 普利兹克奖</div>
+      <div class="quote" data-i18n="designer5Quote">"建筑应该像风一样轻柔地存在于空间中，而不是沉重地压在地面上。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#E0F7FA">🖼️</div>
-      <h4>佐藤卓</h4>
-      <div class="field">设计师 · 节目总监</div>
-      <div class="quote">"'嗨'是获得新知时的惊叹。设计的动力源于对世界的好奇心和感动的能力。"</div>
+      <h4 data-i18n="designer6Name">佐藤卓</h4>
+      <div class="field" data-i18n="designer6Field">设计师 · 节目总监</div>
+      <div class="quote" data-i18n="designer6Quote">"'嗨'是获得新知时的惊叹。设计的动力源于对世界的好奇心和感动的能力。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#FFF9C4">🇩🇪</div>
-      <h4>迪特·拉姆斯</h4>
-      <div class="field">工业设计师 · 博朗</div>
-      <div class="quote">"好的设计是尽可能少的设计。少，但更好。"</div>
+      <h4 data-i18n="designer7Name">迪特·拉姆斯</h4>
+      <div class="field" data-i18n="designer7Field">工业设计师 · 博朗</div>
+      <div class="quote" data-i18n="designer7Quote">"好的设计是尽可能少的设计。少，但更好。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#E1F5FE">🇺🇸</div>
-      <h4>乔纳森·艾维</h4>
-      <div class="field">产品设计师 · 苹果</div>
-      <div class="quote">"简洁不是简单，简洁是对复杂的深刻理解后呈现的优雅。"</div>
+      <h4 data-i18n="designer8Name">乔纳森·艾维</h4>
+      <div class="field" data-i18n="designer8Field">产品设计师 · 苹果</div>
+      <div class="quote" data-i18n="designer8Quote">"简洁不是简单，简洁是对复杂的深刻理解后呈现的优雅。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#FFEBEE">🇬🇧</div>
-      <h4>诺曼·福斯特</h4>
-      <div class="field">建筑师 · 高技派</div>
-      <div class="quote">"建筑不仅是空间的围合，更是光与影的诗篇、人与环境的对话。"</div>
+      <h4 data-i18n="designer9Name">诺曼·福斯特</h4>
+      <div class="field" data-i18n="designer9Field">建筑师 · 高技派</div>
+      <div class="quote" data-i18n="designer9Quote">"建筑不仅是空间的围合，更是光与影的诗篇、人与环境的对话。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#F3E5F5">🇮🇹</div>
-      <h4>菲利普·斯塔克</h4>
-      <div class="field">产品设计师</div>
-      <div class="quote">"设计不应该让人惊叹，而应该让人感到舒适。好的设计是民主的。"</div>
+      <h4 data-i18n="designer10Name">菲利普·斯塔克</h4>
+      <div class="field" data-i18n="designer10Field">产品设计师</div>
+      <div class="quote" data-i18n="designer10Quote">"设计不应该让人惊叹，而应该让人感到舒适。好的设计是民主的。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#E8EAF6">🇨🇳</div>
-      <h4>王澍</h4>
-      <div class="field">建筑师 · 普利兹克奖</div>
-      <div class="quote">"建筑应该像从土地里长出来的一样，和周围的山水融为一体。"</div>
+      <h4 data-i18n="designer11Name">王澍</h4>
+      <div class="field" data-i18n="designer11Field">建筑师 · 普利兹克奖</div>
+      <div class="quote" data-i18n="designer11Quote">"建筑应该像从土地里长出来的一样，和周围的山水融为一体。"</div>
     </div>
     <div class="designer-card">
       <div class="avatar" style="background:#FBE9E7">🇺🇸</div>
-      <h4>保罗·兰德</h4>
-      <div class="field">平面设计师 · IBM标志</div>
-      <div class="quote">"设计是一种思维方式，是连接商业与艺术的桥梁。"</div>
+      <h4 data-i18n="designer12Name">保罗·兰德</h4>
+      <div class="field" data-i18n="designer12Field">平面设计师 · IBM标志</div>
+      <div class="quote" data-i18n="designer12Quote">"设计是一种思维方式，是连接商业与艺术的桥梁。"</div>
     </div>
   </div>
 </section>
@@ -1308,48 +1027,43 @@ footer .footer-ah {
 <section id="exercise">
   <div class="section-header fade-up">
     <div class="section-num">10</div>
-    <h2>✏️ 动手练习</h2>
-    <p class="section-desc">学了这么多，现在来动手试试！在下面的画布上练习你的设计感觉。</p>
+    <h2 data-i18n="s10Title">✏️ 动手练习</h2>
+    <p class="section-desc" data-i18n="s10Desc">学了这么多，现在来动手试试！在下面的画布上练习你的设计感觉。</p>
   </div>
-
   <div class="exercise-area fade-up">
-    <h3 style="margin-bottom:20px">🎨 自由画板</h3>
+    <h3 style="margin-bottom:20px" data-i18n="exerciseTitle">🎨 自由画板</h3>
     <canvas id="drawCanvas" width="600" height="400"></canvas>
     <div class="exercise-tools">
-      <button onclick="setColor('#1A1A1A')">⚫ 黑</button>
-      <button onclick="setColor('#E63946')">🔴 红</button>
-      <button onclick="setColor('#457B9D')">🔵 蓝</button>
-      <button onclick="setColor('#F4A261')">🟠 橙</button>
-      <button onclick="setColor('#2ecc71')">🟢 绿</button>
-      <button onclick="setLineWidth(2)">细线</button>
-      <button onclick="setLineWidth(6)">粗线</button>
-      <button onclick="clearCanvas()">🗑️ 清除</button>
+      <button onclick="setColor('#1A1A1A')" data-i18n="toolBlack">⚫ 黑</button>
+      <button onclick="setColor('#E63946')" data-i18n="toolRed">🔴 红</button>
+      <button onclick="setColor('#457B9D')" data-i18n="toolBlue">🔵 蓝</button>
+      <button onclick="setColor('#F4A261')" data-i18n="toolOrange">🟠 橙</button>
+      <button onclick="setColor('#2ecc71')" data-i18n="toolGreen">🟢 绿</button>
+      <button onclick="setLineWidth(2)" data-i18n="toolThin">细线</button>
+      <button onclick="setLineWidth(6)" data-i18n="toolThick">粗线</button>
+      <button onclick="clearCanvas()" data-i18n="toolClear">🗑️ 清除</button>
     </div>
-    <p style="margin-top:20px;font-size:14px;color:var(--gray)">
-      💡 <strong>挑战：</strong>用不超过3种颜色，画出"安静"和"热闹"两种感觉。<br>
-      想想看，线条的粗细、颜色的深浅、留白的多少，如何传递不同的情绪？
-    </p>
+    <p style="margin-top:20px;font-size:14px;color:var(--gray)" data-i18n-html="exerciseChallenge">💡 <strong>挑战：</strong>用不超过3种颜色，画出"安静"和"热闹"两种感觉。<br>想想看，线条的粗细、颜色的深浅、留白的多少，如何传递不同的情绪？</p>
   </div>
-
   <div class="card fade-up" style="margin-top:32px">
-    <h3><span class="icon">🎯</span> 日常设计挑战</h3>
-    <p>把《嗨设计》的思维带入日常生活，试试这些小任务：</p>
+    <h3><span class="icon">🎯</span> <span data-i18n="dailyChallengeTitle">日常设计挑战</span></h3>
+    <p data-i18n="dailyChallengeIntro">把《嗨设计》的思维带入日常生活，试试这些小任务：</p>
     <div class="card-grid" style="margin-top:16px">
       <div style="padding:20px;background:#E8F5E9;border-radius:12px">
-        <h4 style="font-size:15px">🥢 挑战1：观察餐具</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">今晚吃饭时观察你的筷子、勺子、碗——它们的形状如何服务于各自的功能？</p>
+        <h4 style="font-size:15px" data-i18n="challenge1Title">🥢 挑战1：观察餐具</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="challenge1Desc">今晚吃饭时观察你的筷子、勺子、碗——它们的形状如何服务于各自的功能？</p>
       </div>
       <div style="padding:20px;background:#E3F2FD;border-radius:12px">
-        <h4 style="font-size:15px">📱 挑战2：拆解App</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">打开你最常用的App，试着"拆解"它的界面：哪些是导航、哪些是内容、哪些是操作按钮？</p>
+        <h4 style="font-size:15px" data-i18n="challenge2Title">📱 挑战2：拆解App</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="challenge2Desc">打开你最常用的App，试着"拆解"它的界面：哪些是导航、哪些是内容、哪些是操作按钮？</p>
       </div>
       <div style="padding:20px;background:#FFF3E0;border-radius:12px">
-        <h4 style="font-size:15px">🛒 挑战3：重排货架</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">去超市时观察货架的排列逻辑：为什么同类商品放在一起？为什么糖果在收银台旁边？</p>
+        <h4 style="font-size:15px" data-i18n="challenge3Title">🛒 挑战3：重排货架</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="challenge3Desc">去超市时观察货架的排列逻辑：为什么同类商品放在一起？为什么糖果在收银台旁边？</p>
       </div>
       <div style="padding:20px;background:#F3E5F5;border-radius:12px">
-        <h4 style="font-size:15px">🏠 挑战4：审视房间</h4>
-        <p style="font-size:13px;color:var(--gray);margin-top:6px">环顾你的房间，想想哪些东西的位置是合理的，哪些让你觉得别扭——然后尝试重新排列。</p>
+        <h4 style="font-size:15px" data-i18n="challenge4Title">🏠 挑战4：审视房间</h4>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px" data-i18n="challenge4Desc">环顾你的房间，想想哪些东西的位置是合理的，哪些让你觉得别扭——然后尝试重新排列。</p>
       </div>
     </div>
   </div>
@@ -1357,13 +1071,415 @@ footer .footer-ah {
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="footer-ah">嗨</div>
-  <p>知识来源：NHK 教育频道《嗨设计 / Design Ah!》整理：<a href="https://github.com/hisunfei" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">孙飞@hisunfei</a></p>
-  <p style="margin-top:12px">设计，是让事物变得更好的思考过程。</p>
-  <p>保持好奇，保持观察。</p>
+  <div class="footer-ah" data-i18n="footerAh">嗨</div>
+  <p data-i18n-html="footerCredit">知识来源：NHK 教育频道《嗨设计 / Design Ah!》整理：<a href="https://github.com/hisunfei" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">孙飞@hisunfei</a></p>
+  <p style="margin-top:12px" data-i18n="footerTagline">设计，是让事物变得更好的思考过程。</p>
+  <p data-i18n="footerClosing">保持好奇，保持观察。</p>
 </footer>
 
 <script>
+// ===== I18N TRANSLATIONS =====
+const i18n = {
+  zh: {
+    pageTitle: '嗨设计 — 设计思维启蒙',
+    heroAh: '嗨', heroTitle: '嗨设计',
+    heroSubtitle: '设计，是让事物变得更好的思考方式。<br>从观察身边的一切开始，发现隐藏在日常中的美与智慧。',
+    scrollHint: '向下探索',
+    navObserve: '观察', navDeconstruct: '拆解', navCollect: '集合', navTypography: '文字',
+    navLayout: '排版', navPattern: '纹样', navArch: '空间', navPrinciples: '法则',
+    navDesigners: '大师', navExercise: '动手',
+    s1Title: '🔍 设计的观察', s1Desc: '仔细观察身边的事物，你会发现意想不到的美。一颗鸡蛋、一杯水、一片叶子——每一样都藏着精心设计。',
+    s1Card1Title: '看见看不见的设计', s1Card1Intro: '日常生活中充满了被忽视的设计。点击下方物品，看看它们背后隐藏的设计智慧：',
+    obsEgg: '鸡蛋', obsEggDetail: '鸡蛋的椭圆造型是自然界最精妙的设计之一。蛋壳的弧度将压力均匀分散，让薄薄的壳能承受远超自身重量的压力。母鸡在孵化时不会压碎蛋，但小鸡从内部轻轻一啄就能破壳——内外受力的完美平衡。',
+    obsCup: '茶杯', obsCupDetail: '茶杯的把手为什么是环形的？因为它刚好容纳一根手指，让你端起时既稳当又不被杯壁烫到。杯底的圈足让杯子不直接接触桌面，防止热量散失过快，也让杯子更容易拿起来。',
+    obsKey: '钥匙', obsKeyDetail: '钥匙的齿纹就像指纹——每把钥匙的锯齿高度和间距都不同，对应锁芯内弹子的排列。钥匙头部的圆孔让你挂在钥匙环上，扁平的形状方便插入锁孔，边缘的凹槽防止反向插入。',
+    obsClip: '回形针', obsClipDetail: '回形针的三重弯曲设计，让它能同时夹住纸张的正面和背面。弹簧钢材质让它反复弯折也不会断。它不会像订书钉那样在纸上留下永久痕迹，也不会像胶带那样粘坏纸张——可逆、无伤、优雅。',
+    obsZipper: '拉链', obsZipperDetail: '拉链的每个齿都有精确的凸凹槽，拉头经过时，凸槽和凹槽像拼图一样咬合在一起。这个发明改变了服装、箱包和无数产品的开合方式。一条小小的拉链，替代了几十个纽扣。',
+    obsOrange: '橘子', obsOrangeDetail: '橘子的瓣状结构是天然的"分装设计"。橘皮的纹理让手指容易抓握和剥开，白色橘络保护果肉不被碰伤，每一瓣都有薄膜包裹，汁水不会流出。从外观到内部，每一层都有明确的功能。',
+    s1Card2Title: '观察的方法', s1Card2Intro: '好的设计师都有一套观察方法：',
+    obsMethod1Title: '放大细节', obsMethod1Desc: '把东西放大100倍来看。你会发现纸张的纤维、金属的晶粒、皮肤的纹理——微观世界本身就是一种设计。',
+    obsMethod2Title: '反转视角', obsMethod2Desc: '把东西倒过来看、从底部看、从内部看。一把椅子翻过来，你会看到底部的防滑垫、螺丝的排列方式——这些都是有意为之。',
+    obsMethod3Title: '比较差异', obsMethod3Desc: '同一种东西，不同的设计：同样是杯子，为什么茶杯、咖啡杯、红酒杯形状不同？差异背后就是设计的逻辑。',
+    s2Title: '🔧 拆解', s2Desc: '把一件东西拆开，看看它由什么组成。当你把日常物品分解成一个个零件，你会惊叹于它的精密和巧思。',
+    s2Card1Title: '互动拆解', s2Card1Intro: '选择一件物品，点击"拆解"看它如何被分解成各个组成部分：',
+    deconBtnPencil: '✏️ 铅笔', deconBtnBento: '🍱 便当盒', deconBtnBook: '📚 一本书',
+    s2Card2Title: '拆解教会我们什么？',
+    deconLearn1Title: '🔩 每个零件都有功能', deconLearn1Desc: '拆开一把雨伞：伞骨负责支撑，弹簧负责开合，伞面负责遮雨。没有一个零件是多余的。',
+    deconLearn2Title: '📐 材料选择有道理', deconLearn2Desc: '为什么铅笔的笔芯用石墨？因为石墨软硬适中，能在纸上留下痕迹又不会太脆。每个材料的选择都经过深思熟虑。',
+    deconLearn3Title: '🔄 组装顺序很重要', deconLearn3Desc: '便当盒的每个隔层都有固定位置，书的书脊、封面、内页按特定顺序粘合。拆解再组装，理解事物的逻辑关系。',
+    s3Title: '🧩 集合！', s3Desc: '把很多同类的东西收集到一起，排列整齐。你会看到规律、差异和意想不到的美。',
+    s3Card1Title: '互动集合', s3Card1Intro: '点击"排列"按钮，看混乱的元素如何被整理成有序的图案：',
+    collShuffle: '🎲 打乱', collColor: '按颜色排列', collSize: '按大小排列', collType: '按类型排列',
+    s3Card2Title: '集合中发现的规律',
+    collPattern1Title: '🔤 文字的集合', collPattern1Desc: '把同一字体的所有字母排列在一起，你会发现它们有统一的"骨架"——这就是字体的DNA。',
+    collPattern2Title: '🍎 水果的集合', collPattern2Desc: '把所有水果放在一起比较：颜色从绿到红到紫，大小从蓝莓到西瓜。自然界的"设计谱"一目了然。',
+    collPattern3Title: '🪑 椅子的集合', collPattern3Desc: '收集100把不同时代的椅子，你会看到材料从木头到金属到塑料的演变，以及人体工学如何影响造型。',
+    s4Title: '🔤 文字图形', s4Desc: '文字不只是用来"读"的，更是用来"看"的。字的形状、大小、间距，都在传递信息。',
+    s4Card1Title: '互动：感受字重的力量', s4Card1Intro: '拖动滑块改变文字粗细，感受同一个字在不同字重下的情绪变化：',
+    typoSample: '设计改变世界', typoThin: '极细', typoRegular: '常规', typoBold: '极粗',
+    s4Card2Title: '字间距的魔法', s4Card2Intro: '同一个词，不同的字间距，传达完全不同的感受：',
+    spacingTight: '紧凑有力', spacingNormal: '自然舒适', spacingWide: '优 雅 呼 吸', spacingUltra: '极 简 留 白',
+    s4Card3Title: '排版之歌', s4Card3Intro: '《嗨设计》中最受欢迎的MV之一。野村律子创作的这首歌曲，用歌声和画面展示排版如何让信息更清晰：',
+    typoPrinciple1Title: '📋 对齐', typoPrinciple1Desc: '左对齐、居中、两端对齐——不同的对齐方式带来不同的视觉节奏。',
+    typoPrinciple2Title: '📐 层级', typoPrinciple2Desc: '大标题→小标题→正文——用大小和粗细建立信息的重要性层级。',
+    typoPrinciple3Title: '⬜ 留白', typoPrinciple3Desc: '文字周围的空间不是"空的"，是让内容呼吸的"设计空间"。',
+    typoPrinciple4Title: '🎯 聚焦', typoPrinciple4Desc: '通过颜色和对比度，引导读者的视线先看哪里、后看哪里。',
+    s5Title: '📐 排版设计', s5Desc: '好的排版让信息一目了然，差的排版让人头疼。对比一下两种排列方式：',
+    layoutBad: '❌ 差的排版', layoutBadText: '紧急通知明天下午三点在大会议室开全体员工大会请准时参加不要迟到带好笔记本和笔记录会议内容会后提交总结报告给部门负责人',
+    layoutGood: '✅ 好的排版',
+    layoutGoodContent: '<div style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:8px">📢 紧急通知</div><div style="font-size:14px;margin-bottom:4px"><strong>时间：</strong>明天 下午 3:00</div><div style="font-size:14px;margin-bottom:4px"><strong>地点：</strong>大会议室</div><div style="font-size:14px;margin-bottom:4px"><strong>参与：</strong>全体员工</div><div style="font-size:13px;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed #ddd">⚠️ 请准时参加，带好笔记本和笔<br>📝 会后提交总结报告给部门负责人</div>',
+    s5CardTitle: '排版的四大法则',
+    layoutRule1Title: '对齐', layoutRule1Desc: '所有元素沿一条看不见的线排列，创造秩序感。',
+    layoutRule2Title: '对比', layoutRule2Desc: '重要的东西更大、更粗、更亮，让视线有重点。',
+    layoutRule3Title: '重复', layoutRule3Desc: '相同的样式反复出现，建立统一的视觉语言。',
+    layoutRule4Title: '亲密', layoutRule4Desc: '相关的内容靠在一起，不相关的分开，自然分组。',
+    s6Title: '🔶 纹样 — 图案的秘密', s6Desc: '纹样是重复排列的图案。从古代的陶器纹饰到现代的布料印花，纹样是人类最古老的设计语言之一。',
+    s6Card1Title: '互动：点击变换纹样', s6Card1Intro: '点击每个方块旋转它，创造你自己的纹样图案：',
+    patternRandom: '🎲 随机纹样', patternReset: '🔄 重置',
+    s6Card2Title: '世界各地的纹样',
+    patternJP: '日本 · 市松纹样', patternJPDesc: '黑白相间的方格图案，2020东京奥运会会徽的灵感来源。',
+    patternIslam: '伊斯兰 · 几何纹样', patternIslamDesc: '基于数学的精密几何图案，无限重复、无限变化。',
+    patternCN: '中国 · 回纹', patternCNDesc: '连续回旋的方形线条，象征富贵绵长、生生不息。',
+    patternGR: '希腊 · 回字纹', patternGRDesc: '又称"希腊钥匙纹"，连续不断的折线，象征永恒。',
+    s7Title: '🏗️ 空间设计', s7Desc: '建筑和空间的设计，决定了我们在其中的感受。空间不只是"空的"，它是被精心塑造的体验。',
+    arch1Title: '对称与庄重', arch1Desc: '古典建筑的左右对称传递庄严和稳定感。故宫、帕特农神庙都用对称来表达权力与秩序。',
+    arch2Title: '自然与建筑', arch2Desc: '隈研吾的"负建筑"理念：建筑不应该对抗自然，而应该融入其中。木头、竹子、纸张都是好材料。',
+    arch3Title: '光与空间', arch3Desc: '安藤忠雄的"光之教堂"：在混凝土墙上切出十字形的缝隙，让自然光成为空间的灵魂。',
+    arch4Title: '动线设计', arch4Desc: '人在空间中移动的路径叫"动线"。好的动线让你自然而然地走到想去的地方，不需要指示牌。',
+    arch5Title: '尺度与比例', arch5Desc: '天花板的高度、门的大小、窗户的位置——这些数字不是随意决定的，而是根据人体比例精心计算。',
+    arch6Title: '内外之间', arch6Desc: '日本建筑的"灰空间"概念：室内和室外之间的过渡空间（如廊下/走廊），让人既在屋里又感受自然。',
+    s8Title: '📖 设计的十大法则', s8Desc: '从《嗨设计》中提炼出的核心设计原则。掌握这些法则，你就能理解为什么有些设计让人舒服，有些让人别扭。',
+    rule1Title: '观察是设计的起点', rule1Desc: '好的设计从仔细观察开始。在看一件东西之前，先问自己：它为什么是这个形状？这个颜色？这个大小？',
+    rule2Title: '形式追随功能', rule2Desc: '一个东西的外形应该服务于它的功能。茶壶的壶嘴朝上翘是为了倒水，壶柄远离壶身是为了不烫手。',
+    rule3Title: '少即是多', rule3Desc: '去掉所有不必要的东西。如果一个元素去掉后不影响功能，那它就应该被去掉。简洁不是简陋。',
+    rule4Title: '对比产生焦点', rule4Desc: '如果所有东西都一样大、一样粗、一样亮，就没有重点。通过对比（大/小、粗/细、明/暗），让最重要的信息最先被看到。',
+    rule5Title: '重复建立节奏', rule5Desc: '同样的元素反复出现（颜色、形状、间距），创造视觉的统一感和韵律感。这就是为什么纹样让人看着舒服。',
+    rule6Title: '留白是设计的一部分', rule6Desc: '空着的地方不是"浪费"，而是让有内容的地方更突出。好的设计懂得什么时候不说话。',
+    rule7Title: '以用户为中心', rule7Desc: '设计不是自我表达，而是为使用者服务。门把手应该让所有人都容易拉开，包括小孩和老人。',
+    rule8Title: '细节决定品质', rule8Desc: '一个按钮的圆角弧度、一条线的粗细、两个元素之间的距离——这些微小的细节加在一起，决定了整体感受。',
+    rule9Title: '限制激发创意', rule9Desc: '有限制才有创造力。一张A4纸的限制让你思考如何精炼信息，一种颜色的限制让你思考如何用深浅变化表达层次。',
+    rule10Title: '好设计是看不见的', rule10Desc: '最好的设计是你不会注意到的。你不会注意到一个好用的门把手，但一定会为一个难用的门把手感到困扰。',
+    s9Title: '👨‍🎨 设计大师的话', s9Desc: '来自世界各地的顶尖设计师分享他们的设计哲学。这里收录了他们最精华的设计思考。',
+    designer1Name: '隈研吾', designer1Field: '建筑师', designer1Quote: '"不要试图让建筑变得强大，让它谦逊地融入环境，这才是真正的设计。"',
+    designer2Name: '原研哉', designer2Field: '平面设计师 · 无印良品', designer2Quote: '"设计不是装饰，而是让事物本质更加清晰的手段。白色不是空无，而是无限可能。"',
+    designer3Name: '深泽直人', designer3Field: '产品设计师 · 无印良品', designer3Quote: '"好的设计应该让人无需思考就能使用。把伞靠在墙边时自然找到凹槽——这就是无意识设计。"',
+    designer4Name: '仲条正义', designer4Field: '平面设计师 · 资生堂', designer4Quote: '"文字的形状本身就在说话。选择字体就是在选择说话的声音和语气。"',
+    designer5Name: '伊东丰雄', designer5Field: '建筑师 · 普利兹克奖', designer5Quote: '"建筑应该像风一样轻柔地存在于空间中，而不是沉重地压在地面上。"',
+    designer6Name: '佐藤卓', designer6Field: '设计师 · 节目总监', designer6Quote: '"\'嗨\'是获得新知时的惊叹。设计的动力源于对世界的好奇心和感动的能力。"',
+    designer7Name: '迪特·拉姆斯', designer7Field: '工业设计师 · 博朗', designer7Quote: '"好的设计是尽可能少的设计。少，但更好。"',
+    designer8Name: '乔纳森·艾维', designer8Field: '产品设计师 · 苹果', designer8Quote: '"简洁不是简单，简洁是对复杂的深刻理解后呈现的优雅。"',
+    designer9Name: '诺曼·福斯特', designer9Field: '建筑师 · 高技派', designer9Quote: '"建筑不仅是空间的围合，更是光与影的诗篇、人与环境的对话。"',
+    designer10Name: '菲利普·斯塔克', designer10Field: '产品设计师', designer10Quote: '"设计不应该让人惊叹，而应该让人感到舒适。好的设计是民主的。"',
+    designer11Name: '王澍', designer11Field: '建筑师 · 普利兹克奖', designer11Quote: '"建筑应该像从土地里长出来的一样，和周围的山水融为一体。"',
+    designer12Name: '保罗·兰德', designer12Field: '平面设计师 · IBM标志', designer12Quote: '"设计是一种思维方式，是连接商业与艺术的桥梁。"',
+    s10Title: '✏️ 动手练习', s10Desc: '学了这么多，现在来动手试试！在下面的画布上练习你的设计感觉。',
+    exerciseTitle: '🎨 自由画板',
+    toolBlack: '⚫ 黑', toolRed: '🔴 红', toolBlue: '🔵 蓝', toolOrange: '🟠 橙', toolGreen: '🟢 绿',
+    toolThin: '细线', toolThick: '粗线', toolClear: '🗑️ 清除',
+    exerciseChallenge: '💡 <strong>挑战：</strong>用不超过3种颜色，画出"安静"和"热闹"两种感觉。<br>想想看，线条的粗细、颜色的深浅、留白的多少，如何传递不同的情绪？',
+    dailyChallengeTitle: '日常设计挑战', dailyChallengeIntro: '把《嗨设计》的思维带入日常生活，试试这些小任务：',
+    challenge1Title: '🥢 挑战1：观察餐具', challenge1Desc: '今晚吃饭时观察你的筷子、勺子、碗——它们的形状如何服务于各自的功能？',
+    challenge2Title: '📱 挑战2：拆解App', challenge2Desc: '打开你最常用的App，试着"拆解"它的界面：哪些是导航、哪些是内容、哪些是操作按钮？',
+    challenge3Title: '🛒 挑战3：重排货架', challenge3Desc: '去超市时观察货架的排列逻辑：为什么同类商品放在一起？为什么糖果在收银台旁边？',
+    challenge4Title: '🏠 挑战4：审视房间', challenge4Desc: '环顾你的房间，想想哪些东西的位置是合理的，哪些让你觉得别扭——然后尝试重新排列。',
+    footerAh: '嗨',
+    footerCredit: '知识来源：NHK 教育频道《嗨设计 / Design Ah!》整理：<a href="https://github.com/hisunfei" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">孙飞@hisunfei</a>',
+    footerTagline: '设计，是让事物变得更好的思考过程。',
+    footerClosing: '保持好奇，保持观察。',
+    // Decon data
+    decon_pencil_name: '铅笔', decon_pencil_assembled: '✏️', decon_pencil_desc: '一支铅笔由6个部分组成',
+    decon_pencil_p0: '木质外壳', decon_pencil_p1: '石墨笔芯', decon_pencil_p2: '金属箍',
+    decon_pencil_p3: '橡皮擦', decon_pencil_p4: '六边形截面', decon_pencil_p5: '漆面涂层',
+    decon_bento_name: '便当盒', decon_bento_assembled: '🍱', decon_bento_desc: '一份便当由多种食物和容器组成',
+    decon_bento_p0: '米饭', decon_bento_p1: '煎蛋', decon_bento_p2: '蔬菜',
+    decon_bento_p3: '鸡肉', decon_bento_p4: '酱料', decon_bento_p5: '饭盒',
+    decon_book_name: '一本书', decon_book_assembled: '📚', decon_book_desc: '一本书由封面、封底、书脊、内页、文字等部分组成',
+    decon_book_p0: '内页纸张', decon_book_p1: '封面', decon_book_p2: '封底',
+    decon_book_p3: '书脊', decon_book_p4: '书签带', decon_book_p5: '文字内容',
+    decon_click_label: '点击 {name} 开始拆解',
+    decon_exploded_label: '{desc} — 再次点击物品复原',
+  },
+  en: {
+    pageTitle: 'Design Ah! — Design Thinking for Everyone',
+    heroAh: 'Ah!', heroTitle: 'Design Ah!',
+    heroSubtitle: 'Design is a way of thinking that makes things better.<br>It starts with observing everything around you, discovering the beauty and wisdom hidden in everyday life.',
+    scrollHint: 'Explore Below',
+    navObserve: 'Observe', navDeconstruct: 'Deconstruct', navCollect: 'Collect', navTypography: 'Type',
+    navLayout: 'Layout', navPattern: 'Patterns', navArch: 'Space', navPrinciples: 'Principles',
+    navDesigners: 'Masters', navExercise: 'Practice',
+    s1Title: '🔍 The Art of Observation', s1Desc: 'Look carefully at the things around you and you\'ll discover unexpected beauty. An egg, a cup of water, a leaf — each one hides thoughtful design.',
+    s1Card1Title: 'Design You Can\'t See', s1Card1Intro: 'Everyday life is full of overlooked design. Tap an item below to discover the design wisdom behind it:',
+    obsEgg: 'Egg', obsEggDetail: 'The oval shape of an egg is one of nature\'s most ingenious designs. The curvature distributes pressure evenly, allowing the thin shell to bear far more weight than you\'d expect. A hen won\'t crush the egg while incubating, yet a chick can break through from inside with a single peck — a perfect balance of internal and external forces.',
+    obsCup: 'Teacup', obsCupDetail: 'Why is a teacup handle ring-shaped? Because it fits exactly one finger, letting you hold it steadily without burning your hand on the cup wall. The foot ring on the bottom keeps the cup from touching the table directly, preventing heat loss and making it easier to pick up.',
+    obsKey: 'Key', obsKeyDetail: 'A key\'s teeth are like fingerprints — each key has unique heights and spacing that match the pin arrangement inside the lock. The hole in the head lets you hang it on a keyring, the flat shape slides easily into the keyhole, and the grooves along the edge prevent inserting it backwards.',
+    obsClip: 'Paper Clip', obsClipDetail: 'The triple-bend design of a paper clip lets it grip both the front and back of paper simultaneously. Spring steel means it can be bent repeatedly without breaking. Unlike staples, it leaves no permanent marks; unlike tape, it won\'t damage paper — reversible, harmless, elegant.',
+    obsZipper: 'Zipper', obsZipperDetail: 'Every tooth on a zipper has precisely shaped ridges and grooves. As the slider passes, they interlock like puzzle pieces. This invention transformed clothing, bags, and countless products. A tiny zipper replaced dozens of buttons.',
+    obsOrange: 'Orange', obsOrangeDetail: 'An orange\'s segmented structure is nature\'s own "portion packaging." The textured peel is easy to grip and remove, the white pith protects the flesh, and each segment has a thin membrane that keeps juice from leaking. From outside to inside, every layer has a clear function.',
+    s1Card2Title: 'Methods of Observation', s1Card2Intro: 'Great designers all have their own observation methods:',
+    obsMethod1Title: 'Zoom In on Details', obsMethod1Desc: 'Magnify something 100 times. You\'ll see paper fibers, metal grains, skin texture — the microscopic world is design itself.',
+    obsMethod2Title: 'Reverse Your Perspective', obsMethod2Desc: 'Look at things upside down, from the bottom, from inside. Flip a chair over and you\'ll see anti-slip pads and screw arrangements — all deliberately placed.',
+    obsMethod3Title: 'Compare Differences', obsMethod3Desc: 'Same thing, different designs: why do teacups, coffee cups, and wine glasses have different shapes? Behind the differences lies the logic of design.',
+    s2Title: '🔧 Deconstruction', s2Desc: 'Take things apart to see what they\'re made of. When you decompose everyday objects into individual parts, you\'ll marvel at their precision and ingenuity.',
+    s2Card1Title: 'Interactive Deconstruction', s2Card1Intro: 'Choose an item and tap "Deconstruct" to see it broken into its component parts:',
+    deconBtnPencil: '✏️ Pencil', deconBtnBento: '🍱 Bento Box', deconBtnBook: '📚 A Book',
+    s2Card2Title: 'What Deconstruction Teaches Us',
+    deconLearn1Title: '🔩 Every Part Has a Function', deconLearn1Desc: 'Take apart an umbrella: ribs provide support, the spring enables opening/closing, the canopy blocks rain. No part is superfluous.',
+    deconLearn2Title: '📐 Material Choices Make Sense', deconLearn2Desc: 'Why is pencil lead made of graphite? Because graphite is just soft enough to leave marks on paper yet not too brittle. Every material choice is carefully considered.',
+    deconLearn3Title: '🔄 Assembly Order Matters', deconLearn3Desc: 'Each compartment in a bento box has its fixed position; a book\'s spine, cover, and pages are bonded in a specific sequence. Deconstruct then reassemble to understand logical relationships.',
+    s3Title: '🧩 Collect!', s3Desc: 'Gather many similar things together and arrange them neatly. You\'ll see patterns, differences, and unexpected beauty.',
+    s3Card1Title: 'Interactive Collection', s3Card1Intro: 'Tap the "Sort" buttons to see chaotic elements organized into orderly patterns:',
+    collShuffle: '🎲 Shuffle', collColor: 'Sort by Color', collSize: 'Sort by Size', collType: 'Sort by Type',
+    s3Card2Title: 'Patterns Found in Collections',
+    collPattern1Title: '🔤 Letter Collection', collPattern1Desc: 'Arrange all letters of one font together and you\'ll discover they share a common "skeleton" — that\'s the font\'s DNA.',
+    collPattern2Title: '🍎 Fruit Collection', collPattern2Desc: 'Compare all fruits together: colors from green to red to purple, sizes from blueberry to watermelon. Nature\'s "design spectrum" at a glance.',
+    collPattern3Title: '🪑 Chair Collection', collPattern3Desc: 'Collect 100 chairs from different eras and you\'ll see materials evolve from wood to metal to plastic, and how ergonomics shapes form.',
+    s4Title: '🔤 Typography', s4Desc: 'Text isn\'t just for "reading" — it\'s also for "seeing." The shape, size, and spacing of letters all convey information.',
+    s4Card1Title: 'Interactive: Feel the Power of Weight', s4Card1Intro: 'Drag the slider to change text weight and feel how the same characters shift in emotion:',
+    typoSample: 'Design Changes the World', typoThin: 'Thin', typoRegular: 'Regular', typoBold: 'Black',
+    s4Card2Title: 'The Magic of Letter Spacing', s4Card2Intro: 'The same word, different spacing, conveys completely different feelings:',
+    spacingTight: 'Bold & Tight', spacingNormal: 'Natural & Comfy', spacingWide: 'E l e g a n t', spacingUltra: 'M i n i m a l',
+    s4Card3Title: 'The Typography Song', s4Card3Intro: 'One of the most popular segments from Design Ah! Ritsuko Nakamura\'s song demonstrates through music and visuals how typography makes information clearer:',
+    typoPrinciple1Title: '📋 Alignment', typoPrinciple1Desc: 'Left-aligned, centered, justified — different alignments create different visual rhythms.',
+    typoPrinciple2Title: '📐 Hierarchy', typoPrinciple2Desc: 'Big heading → subheading → body text — use size and weight to establish information importance.',
+    typoPrinciple3Title: '⬜ White Space', typoPrinciple3Desc: 'The space around text isn\'t "empty" — it\'s "design space" that lets content breathe.',
+    typoPrinciple4Title: '🎯 Focus', typoPrinciple4Desc: 'Use color and contrast to guide the reader\'s eye — what to see first, what to see next.',
+    s5Title: '📐 Layout Design', s5Desc: 'Good layout makes information clear at a glance; bad layout gives you a headache. Compare two approaches:',
+    layoutBad: '❌ Bad Layout', layoutBadText: 'URGENT NOTICE meeting tomorrow 3pm in main conference room all staff must attend please be on time bring notebook and pen to take notes submit summary report to department head after meeting',
+    layoutGood: '✅ Good Layout',
+    layoutGoodContent: '<div style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:8px">📢 Urgent Notice</div><div style="font-size:14px;margin-bottom:4px"><strong>When:</strong> Tomorrow 3:00 PM</div><div style="font-size:14px;margin-bottom:4px"><strong>Where:</strong> Main Conference Room</div><div style="font-size:14px;margin-bottom:4px"><strong>Who:</strong> All Staff</div><div style="font-size:13px;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed #ddd">⚠️ Please arrive on time with notebook and pen<br>📝 Submit summary report to department head after meeting</div>',
+    s5CardTitle: 'The Four Laws of Layout',
+    layoutRule1Title: 'Alignment', layoutRule1Desc: 'All elements line up along an invisible line, creating a sense of order.',
+    layoutRule2Title: 'Contrast', layoutRule2Desc: 'Important things are bigger, bolder, brighter — giving the eye a focal point.',
+    layoutRule3Title: 'Repetition', layoutRule3Desc: 'The same styles recur, establishing a unified visual language.',
+    layoutRule4Title: 'Proximity', layoutRule4Desc: 'Related items are placed close together; unrelated items are separated — natural grouping.',
+    s6Title: '🔶 Patterns — The Secret of Repetition', s6Desc: 'Patterns are repeated arrangements of motifs. From ancient pottery decorations to modern fabric prints, patterns are one of humanity\'s oldest design languages.',
+    s6Card1Title: 'Interactive: Tap to Transform Patterns', s6Card1Intro: 'Tap each square to rotate it and create your own pattern design:',
+    patternRandom: '🎲 Randomize', patternReset: '🔄 Reset',
+    s6Card2Title: 'Patterns Around the World',
+    patternJP: 'Japan · Ichimatsu Pattern', patternJPDesc: 'Black-and-white checkered pattern, the inspiration for the 2020 Tokyo Olympics emblem.',
+    patternIslam: 'Islamic · Geometric Pattern', patternIslamDesc: 'Precise mathematical geometric patterns, infinitely repeating, infinitely varying.',
+    patternCN: 'China · Hui Wen (Key Fret)', patternCNDesc: 'Continuously spiraling square lines, symbolizing enduring prosperity and endless renewal.',
+    patternGR: 'Greece · Meander', patternGRDesc: 'Also called the "Greek key," continuous zigzagging lines symbolizing eternity.',
+    s7Title: '🏗️ Spatial Design', s7Desc: 'The design of buildings and spaces determines how we feel within them. Space isn\'t just "empty" — it\'s a carefully crafted experience.',
+    arch1Title: 'Symmetry & Dignity', arch1Desc: 'The bilateral symmetry of classical architecture conveys solemnity and stability. The Forbidden City and the Parthenon both use symmetry to express power and order.',
+    arch2Title: 'Nature & Architecture', arch2Desc: 'Kengo Kuma\'s "negative architecture" philosophy: buildings should not fight nature but merge with it. Wood, bamboo, and paper are all excellent materials.',
+    arch3Title: 'Light & Space', arch3Desc: 'Tadao Ando\'s "Church of the Light": a cross-shaped slit cut into a concrete wall lets natural light become the soul of the space.',
+    arch4Title: 'Circulation Design', arch4Desc: 'The path people take through a space is called "circulation." Good circulation leads you naturally to where you want to go, without needing signs.',
+    arch5Title: 'Scale & Proportion', arch5Desc: 'Ceiling height, door size, window placement — these numbers aren\'t arbitrary but carefully calculated based on human proportions.',
+    arch6Title: 'Between Inside & Outside', arch6Desc: 'The Japanese concept of "grey space": transitional areas between indoors and outdoors (like engawa porches) let you feel nature while still being inside.',
+    s8Title: '📖 Ten Principles of Design', s8Desc: 'Core design principles distilled from Design Ah! Master these and you\'ll understand why some designs feel right and others feel wrong.',
+    rule1Title: 'Observation Is the Starting Point', rule1Desc: 'Good design starts with careful observation. Before looking at anything, ask: why this shape? This color? This size?',
+    rule2Title: 'Form Follows Function', rule2Desc: 'An object\'s shape should serve its function. A teapot spout curves up for pouring; the handle stays far from the body to avoid burns.',
+    rule3Title: 'Less Is More', rule3Desc: 'Remove everything unnecessary. If an element can be removed without affecting function, it should be. Simplicity is not simplicity of thought.',
+    rule4Title: 'Contrast Creates Focus', rule4Desc: 'If everything is the same size, weight, and brightness, nothing stands out. Use contrast (big/small, bold/thin, light/dark) so the most important information is seen first.',
+    rule5Title: 'Repetition Builds Rhythm', rule5Desc: 'Recurring elements (colors, shapes, spacing) create visual unity and rhythm. That\'s why patterns are so pleasing to the eye.',
+    rule6Title: 'White Space Is Part of Design', rule6Desc: 'Empty areas aren\'t "wasted" — they make the content areas stand out. Good design knows when to be silent.',
+    rule7Title: 'Design for the User', rule7Desc: 'Design isn\'t self-expression; it\'s serving the user. A door handle should be easy for everyone, including children and the elderly.',
+    rule8Title: 'Details Determine Quality', rule8Desc: 'The corner radius of a button, the thickness of a line, the gap between two elements — these tiny details add up to determine the overall feel.',
+    rule9Title: 'Constraints Spark Creativity', rule9Desc: 'Limitations breed creativity. An A4 page forces you to distill information; a single color makes you explore tonal variations for depth.',
+    rule10Title: 'Good Design Is Invisible', rule10Desc: 'The best design is what you never notice. You won\'t notice a good door handle, but you\'ll definitely be frustrated by a bad one.',
+    s9Title: '👨‍🎨 Words from Design Masters', s9Desc: 'Top designers from around the world share their design philosophy. Here are their most essential reflections on design.',
+    designer1Name: 'Kengo Kuma', designer1Field: 'Architect', designer1Quote: '"Don\'t try to make architecture powerful. Let it humbly blend into the environment — that is true design."',
+    designer2Name: 'Kenya Hara', designer2Field: 'Graphic Designer · MUJI', designer2Quote: '"Design is not decoration, but a means to make the essence of things clearer. White is not emptiness — it is infinite possibility."',
+    designer3Name: 'Naoto Fukasawa', designer3Field: 'Product Designer · MUJI', designer3Quote: '"Good design should let people use things without thinking. When you lean an umbrella against a wall and naturally find the groove — that\'s design without thought."',
+    designer4Name: 'Masayoshi Nakajo', designer4Field: 'Graphic Designer · Shiseido', designer4Quote: '"The shape of letters speaks for itself. Choosing a font is choosing a voice and tone."',
+    designer5Name: 'Toyo Ito', designer5Field: 'Architect · Pritzker Prize', designer5Quote: '"Architecture should exist in space as gently as the wind, not press heavily upon the ground."',
+    designer6Name: 'Taku Satoh', designer6Field: 'Designer · Program Director', designer6Quote: '"\'Ah!\' is the exclamation of gaining new knowledge. The driving force of design springs from curiosity and the capacity to be moved."',
+    designer7Name: 'Dieter Rams', designer7Field: 'Industrial Designer · Braun', designer7Quote: '"Good design is as little design as possible. Less, but better."',
+    designer8Name: 'Jony Ive', designer8Field: 'Product Designer · Apple', designer8Quote: '"Simplicity is not simplicity. Simplicity is the elegance that emerges from a profound understanding of complexity."',
+    designer9Name: 'Norman Foster', designer9Field: 'Architect · High-Tech', designer9Quote: '"Architecture is not just the enclosure of space, but a poem of light and shadow, a dialogue between people and environment."',
+    designer10Name: 'Philippe Starck', designer10Field: 'Product Designer', designer10Quote: '"Design shouldn\'t make people gasp — it should make them feel comfortable. Good design is democratic."',
+    designer11Name: 'Wang Shu', designer11Field: 'Architect · Pritzker Prize', designer11Quote: '"Buildings should grow from the land and merge with the surrounding landscape."',
+    designer12Name: 'Paul Rand', designer12Field: 'Graphic Designer · IBM Logo', designer12Quote: '"Design is a way of thinking — a bridge connecting business and art."',
+    s10Title: '✏️ Hands-On Practice', s10Desc: 'You\'ve learned so much — now try it yourself! Practice your design sense on the canvas below.',
+    exerciseTitle: '🎨 Free Canvas',
+    toolBlack: '⚫ Black', toolRed: '🔴 Red', toolBlue: '🔵 Blue', toolOrange: '🟠 Orange', toolGreen: '🟢 Green',
+    toolThin: 'Thin', toolThick: 'Thick', toolClear: '🗑️ Clear',
+    exerciseChallenge: '💡 <strong>Challenge:</strong> Using no more than 3 colors, paint "quiet" and "lively."<br>Think about how line weight, color depth, and white space convey different emotions.',
+    dailyChallengeTitle: 'Daily Design Challenges', dailyChallengeIntro: 'Bring Design Ah! thinking into everyday life. Try these mini tasks:',
+    challenge1Title: '🥢 Challenge 1: Observe Utensils', challenge1Desc: 'At dinner tonight, observe your chopsticks, spoon, and bowl — how does each shape serve its function?',
+    challenge2Title: '📱 Challenge 2: Deconstruct an App', challenge2Desc: 'Open your most-used app and try to "deconstruct" its interface: which parts are navigation, content, and action buttons?',
+    challenge3Title: '🛒 Challenge 3: Rethink the Shelf', challenge3Desc: 'Next time at the supermarket, observe shelf logic: why are similar products grouped? Why are candies next to the register?',
+    challenge4Title: '🏠 Challenge 4: Audit Your Room', challenge4Desc: 'Look around your room. Which item placements feel right? Which feel off? Then try rearranging.',
+    footerAh: 'Ah!',
+    footerCredit: 'Source: NHK Educational TV "Design Ah!" Compiled by: <a href="https://github.com/hisunfei" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">Sun Fei @hisunfei</a>',
+    footerTagline: 'Design is the thinking process that makes things better.',
+    footerClosing: 'Stay curious. Stay observant.',
+    decon_pencil_name: 'Pencil', decon_pencil_assembled: '✏️', decon_pencil_desc: 'A pencil is made of 6 parts',
+    decon_pencil_p0: 'Wooden casing', decon_pencil_p1: 'Graphite core', decon_pencil_p2: 'Metal ferrule',
+    decon_pencil_p3: 'Eraser', decon_pencil_p4: 'Hexagonal cross-section', decon_pencil_p5: 'Paint coating',
+    decon_bento_name: 'Bento Box', decon_bento_assembled: '🍱', decon_bento_desc: 'A bento consists of various foods and containers',
+    decon_bento_p0: 'Rice', decon_bento_p1: 'Fried egg', decon_bento_p2: 'Vegetables',
+    decon_bento_p3: 'Chicken', decon_bento_p4: 'Sauce', decon_bento_p5: 'Box',
+    decon_book_name: 'A Book', decon_book_assembled: '📚', decon_book_desc: 'A book consists of cover, back cover, spine, pages, and text',
+    decon_book_p0: 'Inner pages', decon_book_p1: 'Front cover', decon_book_p2: 'Back cover',
+    decon_book_p3: 'Spine', decon_book_p4: 'Bookmark ribbon', decon_book_p5: 'Text content',
+    decon_click_label: 'Tap {name} to deconstruct',
+    decon_exploded_label: '{desc} — tap item again to reassemble',
+  },
+  ja: {
+    pageTitle: 'デザインあ — デザイン思考の启蒙',
+    heroAh: 'あ', heroTitle: 'デザインあ',
+    heroSubtitle: 'デザインとは、ものをより良くするための考え方。<br>身近なすべてのものから観察を始め、日常に隠された美と知恵を発見しよう。',
+    scrollHint: '下にスクロール',
+    navObserve: '観察', navDeconstruct: '分解', navCollect: '集合', navTypography: '文字',
+    navLayout: 'レイアウト', navPattern: '文様', navArch: '空間', navPrinciples: '法則',
+    navDesigners: '巨匠', navExercise: 'やってみよう',
+    s1Title: '🔍 デザインの観察', s1Desc: '身近なものをよく見ると、思いがけない美しさが見つかる。卵、コップ一杯の水、一枚の葉——どれにも工夫されたデザインが隠れている。',
+    s1Card1Title: '見えないデザインを見る', s1Card1Intro: '日常生活には見過ごされているデザインがいっぱい。下のアイテムをタップして、隠されたデザインの知恵を見てみよう：',
+    obsEgg: '卵', obsEggDetail: '卵の楕円形は自然界で最も精巧なデザインの一つ。殻のカーブが圧力を均等に分散し、薄い殻でも自重をはるかに超える力に耐えられる。ニワトリが孵化の時に卵を潰さないのに、雛は内側から軽くつつくだけで殻を破れる——内外の力の完璧なバランス。',
+    obsCup: '湯呑み', obsCupDetail: '湯呑みの取っ手はなぜ輪っか形？ちょうど指一本が入る大きさで、持った時に安定し、かつ熱い壁に触れない。底の高台で卓面に直接触れず、熱が逃げすぎないようになり、持ちやすくもなる。',
+    obsKey: '鍵', obsKeyDetail: '鍵の歯は指紋のようなもの——それぞれの鍵の歯の高さと間隔は異なり、錠前のピンの配列に対応する。頭の穴でキーリングに通せ、平たい形で鍵穴に差し込みやすく、溝が逆差しを防止する。',
+    obsClip: 'クリップ', obsClipDetail: 'クリップの三重弯曲デザインで、紙の表と裏を同時に挟める。バネ鋼素材で何度も曲げても折れない。ホッチキスのように紙に永久痕を残さず、テープのように紙を傷めない——可逆的、無害、優雅。',
+    obsZipper: 'ファスナー', obsZipperDetail: 'ファスナーの歯には精密な凹凸があり、スライダーが通るとパズルのように噛み合う。この発明が衣服、カバン、無数の製品の開閉方法を変えた。小さなファスナーが何十個ものボタンに取って代わった。',
+    obsOrange: 'みかん', obsOrangeDetail: 'みかんの房状構造は天然の「小分けデザイン」。皮の質感で掴みやすく剥きやすい。白い筋が果肉を守り、一房ずつ薄膜に包まれて汁が漏れない。外観から内部まで、各層に明確な機能がある。',
+    s1Card2Title: '観察の方法', s1Card2Intro: '優れたデザイナーには観察の方法がある：',
+    obsMethod1Title: 'ディテールを拡大する', obsMethod1Desc: 'ものを100倍に拡大して見る。紙の繊維、金属の結晶、肌の纹理が見える——ミクロの世界そのものがデザイン。',
+    obsMethod2Title: '視点を変える', obsMethod2Desc: '逆さまに見る、底から見る、内側から見る。椅子をひっくり返すと、滑り止めパッドやネジの配置が見える——すべて意図的に設計されている。',
+    obsMethod3Title: '違いを比較する', obsMethod3Desc: '同じもの、違うデザイン：同じカップでも、湯呑み、コーヒーカップ、ワイングラスの形が違うのはなぜ？違いの裏側にデザインのロジックがある。',
+    s2Title: '🔧 分解', s2Desc: 'ものを分解して、何でできているか見てみよう。日用品を部品に分解すると、その精密さと工夫に驚かされる。',
+    s2Card1Title: 'インタラクティブ分解', s2Card1Intro: 'アイテムを選んで「分解」をタップすると、各構成要素に分解される様子が見られる：',
+    deconBtnPencil: '✏️ 鉛筆', deconBtnBento: '🍱 弁当箱', deconBtnBook: '📚 本',
+    s2Card2Title: '分解から学ぶこと',
+    deconLearn1Title: '🔩 部品にはすべて機能がある', deconLearn1Desc: '傘を分解する：骨が支え、バネが開閉を担い、布が雨を防ぐ。無駄な部品は一つもない。',
+    deconLearn2Title: '📐 素材選びには理由がある', deconLearn2Desc: '鉛筆の芯はなぜ黒鉛？黒鉛は適度な軟らかさで紙に跡を残し、もろすぎない。素材の選択はどれも慎重に考えられている。',
+    deconLearn3Title: '🔄 組み立て順序が大事', deconLearn3Desc: '弁当箱の仕切りには決まった位置があり、本の背表紙・表紙・本文は特定の順序で接着される。分解して組み立て直すことで、ものの論理関係が理解できる。',
+    s3Title: '🧩 集合！', s3Desc: '同じ種類のものをたくさん集めて、きれいに並べる。規則性、違い、そして思いがけない美しさが見えてくる。',
+    s3Card1Title: 'インタラクティブ集合', s3Card1Intro: '「整列」ボタンをタップして、バラバラの要素が整然としたパターンに整理される様子を見てみよう：',
+    collShuffle: '🎲 シャッフル', collColor: '色で整列', collSize: 'サイズで整列', collType: '種類で整列',
+    s3Card2Title: '集合で見つかる規則性',
+    collPattern1Title: '🔤 文字の集合', collPattern1Desc: '同じフォントの全アルファベットを並べると、共通の「骨格」があることに気づく——それがフォントのDNA。',
+    collPattern2Title: '🍎 フルーツの集合', collPattern2Desc: '全フルーツを並べて比較：色は緑から赤、紫へ。大きさはブルーベリーからスイカまで。自然界の「デザイン譜」が一目瞭然。',
+    collPattern3Title: '🪑 椅子の集合', collPattern3Desc: '異なる時代の椅子を100脚集めると、素材が木から金属、プラスチックへと変遷し、人間工学が形に影響する様子がわかる。',
+    s4Title: '🔤 文字のかたち', s4Desc: '文字は「読む」ためだけでなく、「見る」ものでもある。文字の形、大きさ、間隔がすべて情報を伝えている。',
+    s4Card1Title: 'インタラクティブ：太さの力を感じる', s4Card1Intro: 'スライダーを動かして文字の太さを変え、同じ文字が異なるウェイトでどう印象を変えるか感じよう：',
+    typoSample: 'デザインは世界を変える', typoThin: '極細', typoRegular: '標準', typoBold: '極太',
+    s4Card2Title: '文字間隔の魔法', s4Card2Intro: '同じ言葉でも、文字間隔が違うと全く異なる印象を伝える：',
+    spacingTight: '力強い', spacingNormal: '自然で快適', spacingWide: '優 雅 な 余 白', spacingUltra: 'ミ ニ マ ル',
+    s4Card3Title: 'タイポグラフィのうた', s4Card3Intro: '「デザインあ」で最も人気のあるコーナーの一つ。野村律子によるこの楽曲は、タイポグラフィが情報をどう明確にするかを歌と映像で示す：',
+    typoPrinciple1Title: '📋 整列', typoPrinciple1Desc: '左揃え、中央揃え、両端揃え——異なる整列方式が異なる視覚リズムを生む。',
+    typoPrinciple2Title: '📐 階層', typoPrinciple2Desc: '大見出し→小見出し→本文——サイズと太さで情報の重要度の階層を作る。',
+    typoPrinciple3Title: '⬜ 余白', typoPrinciple3Desc: '文字の周りの空間は「空」ではなく、内容を呼吸させる「デザイン空間」。',
+    typoPrinciple4Title: '🎯 フォーカス', typoPrinciple4Desc: '色とコントラストで、読者の視線をどこに先に、どこに次に導くかコントロールする。',
+    s5Title: '📐 レイアウトデザイン', s5Desc: '良いレイアウトは情報を一目で理解させ、悪いレイアウトは頭を痛くする。二つの並べ方を比べてみよう：',
+    layoutBad: '❌ 悪いレイアウト', layoutBadText: '緊急連絡明日午後3時に大会議室にて全社員会議を開催しますので遅刻しないよう時間厳守でノートと筆記用具を持参し会議内容を記録してください会議後所属部門の責任者に要約報告を提出してください',
+    layoutGood: '✅ 良いレイアウト',
+    layoutGoodContent: '<div style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:8px">📢 緊急連絡</div><div style="font-size:14px;margin-bottom:4px"><strong>日時：</strong>明日 午後 3:00</div><div style="font-size:14px;margin-bottom:4px"><strong>場所：</strong>大会議室</div><div style="font-size:14px;margin-bottom:4px"><strong>対象：</strong>全社員</div><div style="font-size:13px;color:var(--gray);margin-top:8px;padding-top:8px;border-top:1px dashed #ddd">⚠️ 時間厳守、ノートと筆記用具持参<br>📝 会議後、所属部門の責任者に要約報告を提出</div>',
+    s5CardTitle: 'レイアウトの四大法則',
+    layoutRule1Title: '整列', layoutRule1Desc: 'すべての要素を見えない線に沿って配置し、秩序感を作る。',
+    layoutRule2Title: '対比', layoutRule2Desc: '重要なものはより大きく、太く、明るくして、視線の重点を作る。',
+    layoutRule3Title: '反復', layoutRule3Desc: '同じスタイルを繰り返し使い、統一感のある視覚言語を確立する。',
+    layoutRule4Title: '近接', layoutRule4Desc: '関連するものは近くに、関連しないものは離して、自然にグルーピングする。',
+    s6Title: '🔶 文様 — パターンの秘密', s6Desc: '文様とは繰り返し配置された図案。古代の土器の紋飾から現代の布地プリントまで、文様は人類最古のデザイン言語の一つ。',
+    s6Card1Title: 'インタラクティブ：タップして文様を変える', s6Card1Intro: '各マス目をタップして回転させ、自分だけの文様パターンを作ろう：',
+    patternRandom: '🎲 ランダム', patternReset: '🔄 リセット',
+    s6Card2Title: '世界各地の文様',
+    patternJP: '日本 · 市松模様', patternJPDesc: '白黒の格子模様。2020年東京オリンピックのエンブレムのインスピレーション源。',
+    patternIslam: 'イスラム · 幾何学文様', patternIslamDesc: '数学に基づく精密な幾何学模様。無限に繰り返し、無限に変化する。',
+    patternCN: '中国 · 雷文', patternCNDesc: '連続的に回旋する方形の線。富貴長久と生生不息を象徴する。',
+    patternGR: 'ギリシャ · メアンダー', patternGRDesc: '「ギリシャ鍵文」とも呼ばれる、連続する折れ線で永遠を象徴する。',
+    s7Title: '🏗️ 空間デザイン', s7Desc: '建築と空間のデザインが、その中にいる私たちの感覚を決める。空間は「空っぽ」ではなく、丁寧に形作られた体験。',
+    arch1Title: '対称と荘重', arch1Desc: '古典建築の左右対称は荘厳さと安定感を伝える。紫禁城もパルテノン神殿も、対称で権力と秩序を表現する。',
+    arch2Title: '自然と建築', arch2Desc: '隈研吾の「負ける建築」の理念：建築は自然に対抗するのではなく、その中に溶け込むべき。木、竹、紙はすべて良い素材。',
+    arch3Title: '光と空間', arch3Desc: '安藤忠雄の「光の教会」：コンクリートの壁に十字形の切り込みを入れ、自然光を空間の魂にした。',
+    arch4Title: '動線デザイン', arch4Desc: '人が空間の中を移動する経路を「動線」と呼ぶ。良い動線は看板なしでも自然に行きたい場所に導いてくれる。',
+    arch5Title: 'スケールとプロポーション', arch5Desc: '天井の高さ、ドアの大きさ、窓の位置——これらの数字は適当ではなく、人体の比率に基づいて緻密に計算されている。',
+    arch6Title: '内と外の間', arch6Desc: '日本建築の「グレー空間」の概念：室内と室外の間の移行空間（縁側など）で、屋内にいながら自然を感じられる。',
+    s8Title: '📖 デザインの十か条', s8Desc: '「デザインあ」から抽出した核心的なデザイン原則。これらをマスターすれば、なぜ心地よいデザインと違和感のあるデザインがあるのかが分かる。',
+    rule1Title: '観察はデザインの原点', rule1Desc: '良いデザインは丁寧な観察から始まる。ものを見る前にまず自問しよう：なぜこの形？この色？この大きさ？',
+    rule2Title: '形は機能に従う', rule2Desc: 'ものの形はその機能に奉仕すべき。急須の注ぎ口が上向きなのは注ぎやすくするため、取っ手が本体から離れているのは火傷を防ぐため。',
+    rule3Title: 'レス・イズ・モア', rule3Desc: '不要なものはすべて取り除く。ある要素を取り除いても機能に影響がなければ、それは取り除くべき。シンプルさは簡素さではない。',
+    rule4Title: '対比がフォーカスを生む', rule4Desc: 'すべてが同じ大きさ、太さ、明るさなら、重点がない。対比（大/小、太/細、明/暗）で最も重要な情報を最初に見せる。',
+    rule5Title: '反復がリズムを築く', rule5Desc: '同じ要素の繰り返し（色、形、間隔）が視覚的な統一感とリズム感を生む。だから文様は見ていて心地よい。',
+    rule6Title: '余白もデザインの一部', rule6Desc: '空いている場所は「無駄」ではなく、内容のある場所を引き立てるもの。良いデザインは黙るべき時を知る。',
+    rule7Title: 'ユーザー中心設計', rule7Desc: 'デザインは自己表現ではなく、使い手に奉仕すること。ドアノブは子供もお年寄りも使いやすいべき。',
+    rule8Title: 'ディテールが品質を決める', rule8Desc: 'ボタンの角丸の弧度、線の太さ、要素間の距離——こうした小さなディテールの積み重ねが全体の印象を決定する。',
+    rule9Title: '制約が創造力を刺激する', rule9Desc: '制約があるからこそ創造力が生まれる。A4用紙1枚の制約が情報の凝縮を考えさせ、1色の制約が濃淡のバリエーションを考えさせる。',
+    rule10Title: '良いデザインは見えない', rule10Desc: '最高のデザインは気づかれないもの。使いやすいドアノブには気づかないが、使いにくいドアノブには必ずイライラする。',
+    s9Title: '👨‍🎨 デザイン巨匠の言葉', s9Desc: '世界各地のトップデザイナーが彼らのデザイン哲学を語る。最もエッセンスが凝縮されたデザイン思考をここに収録。',
+    designer1Name: '隈研吾', designer1Field: '建築家', designer1Quote: '"建築を強くしようとするな。謙虚に環境に溶け込ませよ。それが本当のデザインだ。"',
+    designer2Name: '原研哉', designer2Field: 'グラフィックデザイナー · 無印良品', designer2Quote: '"デザインは装飾ではなく、ものの本質をより明確にする手段。白は空虚ではなく、無限の可能性。"',
+    designer3Name: '深澤直人', designer3Field: 'プロダクトデザイナー · 無印良品', designer3Quote: '"良いデザインは考えなくても使えるもの。傘を壁に立てかけた時に自然と溝が見つかる——それが無意識のデザイン。"',
+    designer4Name: '仲條正義', designer4Field: 'グラフィックデザイナー · 資生堂', designer4Quote: '"文字の形はそれ自体が語っている。書体を選ぶことは、話す声とトーンを選ぶこと。"',
+    designer5Name: '伊東豊雄', designer5Field: '建築家 · プリツカー賞', designer5Quote: '"建築は風のように優しく空間に存在すべきで、重苦しく地面にのしかかるべきではない。"',
+    designer6Name: '佐藤卓', designer6Field: 'デザイナー · 番組ディレクター', designer6Quote: '"「あ」は新しい知を得た時の驚き。デザインの原動力は世界への好奇心と感動する力から生まれる。"',
+    designer7Name: 'ディーター・ラムス', designer7Field: 'インダストリアルデザイナー · ブラウン', designer7Quote: '"良いデザインはできる限り少ないデザインである。少なく、しかしより良く。"',
+    designer8Name: 'ジョナサン・アイブ', designer8Field: 'プロダクトデザイナー · Apple', designer8Quote: '"シンプルさは単純さではない。シンプルさは複雑さを深く理解した後に現れる優雅さ。"',
+    designer9Name: 'ノーマン・フォスター', designer9Field: '建築家 · ハイテク派', designer9Quote: '"建築は空間の囲いだけでなく、光と影の詩であり、人と環境の対話である。"',
+    designer10Name: 'フィリップ・スタルク', designer10Field: 'プロダクトデザイナー', designer10Quote: '"デザインは人を驚かせるのではなく、心地よくさせるべき。良いデザインは民主的だ。"',
+    designer11Name: '王澍', designer11Field: '建築家 · プリツカー賞', designer11Quote: '"建築は土地から生えてきたように、周囲の山水と一体化すべきだ。"',
+    designer12Name: 'ポール・ランド', designer12Field: 'グラフィックデザイナー · IBMロゴ', designer12Quote: '"デザインは一つの思考方法であり、ビジネスとアートをつなぐ橋である。"',
+    s10Title: '✏️ やってみよう', s10Desc: 'たくさん学んだから、次は手を動かしてみよう！下のキャンバスでデザインの感覚を練習しよう。',
+    exerciseTitle: '🎨 自由キャンバス',
+    toolBlack: '⚫ 黒', toolRed: '🔴 赤', toolBlue: '🔵 青', toolOrange: '🟠 オレンジ', toolGreen: '🟢 緑',
+    toolThin: '細い線', toolThick: '太い線', toolClear: '🗑️ クリア',
+    exerciseChallenge: '💡 <strong>チャレンジ：</strong>3色以内で、「静か」と「にぎやか」を描いてみよう。<br>線の太さ、色の濃淡、余白の量がどうやって異なる感情を伝えるか考えてみよう。',
+    dailyChallengeTitle: '日常デザインチャレンジ', dailyChallengeIntro: '「デザインあ」の考え方を日常生活に取り入れて、この小さなタスクに挑戦しよう：',
+    challenge1Title: '🥢 チャレンジ1：食器を観察', challenge1Desc: '今晩の食事で箸、スプーン、お椀を観察しよう——それぞれの形がどう機能に奉仕しているか？',
+    challenge2Title: '📱 チャレンジ2：アプリを分解', challenge2Desc: '一番よく使うアプリを開き、インターフェースを「分解」してみよう：どれがナビゲーション、コンテンツ、アクションボタン？',
+    challenge3Title: '🛒 チャレンジ3：陳列を再考', challenge3Desc: 'スーパーに行ったら棚の配置ロジックを観察：なぜ同じ種類の商品が一緒にあるの？なぜお菓子がレジの横に？',
+    challenge4Title: '🏠 チャレンジ4：部屋を見直す', challenge4Desc: '部屋を見渡して、どのものの配置が理にかなっているか、どれがしっくりこないか考えて——そして並べ替えてみよう。',
+    footerAh: 'あ',
+    footerCredit: '出典：NHK教育テレビ「デザインあ」整理：<a href="https://github.com/hisunfei" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">孫飛@hisunfei</a>',
+    footerTagline: 'デザインとは、ものをより良くするための思考プロセス。',
+    footerClosing: '好奇心を持ち続けよう。観察を続けよう。',
+    decon_pencil_name: '鉛筆', decon_pencil_assembled: '✏️', decon_pencil_desc: '鉛筆は6つの部分で構成されている',
+    decon_pencil_p0: '木製外殻', decon_pencil_p1: '黒鉛芯', decon_pencil_p2: '金属口金',
+    decon_pencil_p3: '消しゴム', decon_pencil_p4: '六角形断面', decon_pencil_p5: '塗装コーティング',
+    decon_bento_name: '弁当箱', decon_bento_assembled: '🍱', decon_bento_desc: '弁当は様々な食べ物と容器で構成される',
+    decon_bento_p0: 'ご飯', decon_bento_p1: '卵焼き', decon_bento_p2: '野菜',
+    decon_bento_p3: '鶏肉', decon_bento_p4: 'タレ', decon_bento_p5: '容器',
+    decon_book_name: '本', decon_book_assembled: '📚', decon_book_desc: '本は表紙、裏表紙、背表紙、ページ、文字などで構成される',
+    decon_book_p0: '中身の紙', decon_book_p1: '表紙', decon_book_p2: '裏表紙',
+    decon_book_p3: '背表紙', decon_book_p4: 'しおり紐', decon_book_p5: '文字コンテンツ',
+    decon_click_label: '{name} をタップして分解',
+    decon_exploded_label: '{desc} — もう一度アイテムをタップして再組み立て',
+  }
+};
+
+let currentLang = localStorage.getItem('ah-lang') || 'zh';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('ah-lang', lang);
+
+  // Update html lang
+  const langMap = { zh: 'zh-CN', en: 'en', ja: 'ja' };
+  document.documentElement.lang = langMap[lang] || lang;
+
+  // Update title
+  document.title = i18n[lang].pageTitle;
+
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) {
+      el.textContent = i18n[lang][key];
+    }
+  });
+
+  // Update all data-i18n-html elements
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+
+  // Update switcher active state
+  document.querySelectorAll('.lang-switcher button').forEach(btn => {
+    btn.classList.remove('active');
+    if ((lang === 'zh' && btn.textContent === '中') ||
+        (lang === 'en' && btn.textContent === 'EN') ||
+        (lang === 'ja' && btn.textContent === '日')) {
+      btn.classList.add('active');
+    }
+  });
+
+  // Re-render decon
+  renderDecon();
+}
+
 // ===== SCROLL ANIMATION =====
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1389,48 +1505,51 @@ function toggleObserve(el) {
   el.classList.toggle('expanded');
 }
 
-// ===== DECONSTRUCTION =====
-const deconData = {
-  pencil: {
-    name: '铅笔',
-    parts: [
-      { emoji: '🪵', label: '木质外壳', x: 0, y: -60, sx: -120, sy: -80 },
-      { emoji: '⬛', label: '石墨笔芯', x: 0, y: 0, sx: 0, sy: -40 },
-      { emoji: '🔶', label: '金属箍', x: 0, y: 60, sx: 120, sy: -80 },
-      { emoji: '🩷', label: '橡皮擦', x: 0, y: -30, sx: -120, sy: 60 },
-      { emoji: '📐', label: '六边形截面', x: 0, y: 30, sx: 120, sy: 60 },
-      { emoji: '🖍️', label: '漆面涂层', x: 0, y: -60, sx: 0, sy: 80 },
-    ],
-    assembled: '✏️',
-    desc: '一支铅笔由6个部分组成'
-  },
-  bento: {
-    name: '便当盒',
-    parts: [
-      { emoji: '🍚', label: '米饭', x: 0, y: 0, sx: -100, sy: -80 },
-      { emoji: '🥚', label: '煎蛋', x: 30, y: -20, sx: 100, sy: -80 },
-      { emoji: '🥦', label: '蔬菜', x: -30, y: 20, sx: -100, sy: 60 },
-      { emoji: '🍗', label: '鸡肉', x: 20, y: 30, sx: 100, sy: 60 },
-      { emoji: '🫙', label: '酱料', x: -20, y: -10, sx: 0, sy: -100 },
-      { emoji: '📦', label: '饭盒', x: 0, y: 50, sx: 0, sy: 100 },
-    ],
-    assembled: '🍱',
-    desc: '一份便当由多种食物和容器组成'
-  },
-  book: {
-    name: '一本书',
-    parts: [
-      { emoji: '📄', label: '内页纸张', x: 0, y: 0, sx: -120, sy: -60 },
-      { emoji: '📕', label: '封面', x: 0, y: -30, sx: 120, sy: -60 },
-      { emoji: '📗', label: '封底', x: 0, y: 30, sx: -120, sy: 60 },
-      { emoji: '📖', label: '书脊', x: -30, y: 0, sx: 0, sy: -80 },
-      { emoji: '🔖', label: '书签带', x: 30, y: -20, sx: 120, sy: 60 },
-      { emoji: '✍️', label: '文字内容', x: 0, y: 20, sx: 0, sy: 80 },
-    ],
-    assembled: '📚',
-    desc: '一本书由封面、封底、书脊、内页、文字等部分组成'
-  }
-};
+// ===== DECONSTRUCTION (language-aware) =====
+function getDeconData() {
+  const t = i18n[currentLang];
+  return {
+    pencil: {
+      name: t.decon_pencil_name,
+      assembled: t.decon_pencil_assembled,
+      desc: t.decon_pencil_desc,
+      parts: [
+        { emoji: '🪵', label: t.decon_pencil_p0, x: 0, y: -60, sx: -120, sy: -80 },
+        { emoji: '⬛', label: t.decon_pencil_p1, x: 0, y: 0, sx: 0, sy: -40 },
+        { emoji: '🔶', label: t.decon_pencil_p2, x: 0, y: 60, sx: 120, sy: -80 },
+        { emoji: '🩷', label: t.decon_pencil_p3, x: 0, y: -30, sx: -120, sy: 60 },
+        { emoji: '📐', label: t.decon_pencil_p4, x: 0, y: 30, sx: 120, sy: 60 },
+        { emoji: '🖍️', label: t.decon_pencil_p5, x: 0, y: -60, sx: 0, sy: 80 },
+      ]
+    },
+    bento: {
+      name: t.decon_bento_name,
+      assembled: t.decon_bento_assembled,
+      desc: t.decon_bento_desc,
+      parts: [
+        { emoji: '🍚', label: t.decon_bento_p0, x: 0, y: 0, sx: -100, sy: -80 },
+        { emoji: '🥚', label: t.decon_bento_p1, x: 30, y: -20, sx: 100, sy: -80 },
+        { emoji: '🥦', label: t.decon_bento_p2, x: -30, y: 20, sx: -100, sy: 60 },
+        { emoji: '🍗', label: t.decon_bento_p3, x: 20, y: 30, sx: 100, sy: 60 },
+                { emoji: '🫙', label: t.decon_bento_p4, x: -20, y: -10, sx: 0, sy: -100 },
+        { emoji: '📦', label: t.decon_bento_p5, x: 0, y: 50, sx: 0, sy: 100 },
+      ]
+    },
+    book: {
+      name: t.decon_book_name,
+      assembled: t.decon_book_assembled,
+      desc: t.decon_book_desc,
+      parts: [
+        { emoji: '📄', label: t.decon_book_p0, x: 0, y: 0, sx: -120, sy: -60 },
+        { emoji: '📕', label: t.decon_book_p1, x: 0, y: -30, sx: 120, sy: -60 },
+        { emoji: '📗', label: t.decon_book_p2, x: 0, y: 30, sx: -120, sy: 60 },
+        { emoji: '📖', label: t.decon_book_p3, x: -30, y: 0, sx: 0, sy: -80 },
+        { emoji: '🔖', label: t.decon_book_p4, x: 30, y: -20, sx: 120, sy: 60 },
+        { emoji: '✍️', label: t.decon_book_p5, x: 0, y: 20, sx: 0, sy: 80 },
+      ]
+    }
+  };
+}
 
 let currentDecon = 'pencil';
 let deconExploded = false;
@@ -1444,14 +1563,16 @@ function switchDecon(type) {
 }
 
 function renderDecon() {
+  const deconData = getDeconData();
   const data = deconData[currentDecon];
   const item = document.getElementById('deconItem');
   const label = document.getElementById('deconLabel');
+  const t = i18n[currentLang];
   item.innerHTML = '';
 
   if (!deconExploded) {
     item.innerHTML = `<span style="font-size:80px;cursor:pointer">${data.assembled}</span>`;
-    label.textContent = `点击 ${data.name} 开始拆解`;
+    label.textContent = t.decon_click_label.replace('{name}', data.name);
     item.onclick = () => { deconExploded = true; renderDecon(); };
   } else {
     data.parts.forEach((p, i) => {
@@ -1464,7 +1585,7 @@ function renderDecon() {
       el.innerHTML = `<div style="text-align:center"><div style="font-size:36px">${p.emoji}</div><div style="font-size:11px;color:#666;margin-top:4px">${p.label}</div></div>`;
       item.appendChild(el);
     });
-    label.textContent = `${data.desc} — 再次点击物品复原`;
+    label.textContent = t.decon_exploded_label.replace('{desc}', data.desc);
     item.onclick = () => { deconExploded = false; renderDecon(); };
   }
 }
@@ -1538,7 +1659,7 @@ function updateTypo() {
   const display = document.getElementById('typoDisplay');
   display.style.fontWeight = weight;
   const names = { 100: 'Thin', 200: 'ExtraLight', 300: 'Light', 400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold', 800: 'ExtraBold', 900: 'Black' };
-  display.setAttribute('title', `字重: ${weight} (${names[weight] || ''})`);
+  display.setAttribute('title', `Weight: ${weight} (${names[weight] || ''})`);
 }
 
 // ===== PATTERN GRID =====
@@ -1626,6 +1747,9 @@ canvas.addEventListener('touchend', stopDraw);
 function setColor(c) { currentColor = c; }
 function setLineWidth(w) { lineWidth = w; }
 function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+// ===== INIT LANGUAGE =====
+setLang(currentLang);
 </script>
 </body>
 </html>
