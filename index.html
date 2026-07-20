@@ -1701,7 +1701,7 @@ function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 <script>
 fetch('https://hits.dwyl.com/hisunfei/Hi-design.json')
   .then(r => r.json())
-  .then(d => { document.getElementById('visit-count').textContent = d.total || 0; })
+  .then(d => { document.getElementById('visit-count').textContent = d.message || '0'; })
   .catch(() => {});
 </script>
 </body>
