@@ -1697,12 +1697,8 @@ function setLineWidth(w) { lineWidth = w; }
 function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 </script>
 <!-- 访问计数器 -->
-<div id="visit-counter" style="text-align:center;margin:40px auto 20px;"><span style="background:#555;color:#fff;padding:4px 8px;border-radius:3px 0 0 3px;font-size:13px;font-family:sans-serif;">visits</span><span id="visit-count" style="background:#F97316;color:#fff;padding:4px 8px;border-radius:0 3px 3px 0;font-size:13px;font-family:sans-serif;">--</span></div>
-<script>
-fetch('https://hits.dwyl.com/hisunfei/Hi-design.json')
-  .then(r => r.json())
-  .then(d => { document.getElementById('visit-count').textContent = d.message || '0'; })
-  .catch(() => {});
-</script>
+<div style="text-align:center;margin:40px auto 20px;">
+  <img src="https://hits.dwyl.com/hisunfei/Hi-design.svg?style=flat-square&label=visits&labelColor=555555&color=F97316" alt="visits" />
+</div>
 </body>
 </html>
